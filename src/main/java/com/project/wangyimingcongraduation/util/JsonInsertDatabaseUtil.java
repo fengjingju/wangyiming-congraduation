@@ -7,11 +7,13 @@ import com.project.wangyimingcongraduation.mapper.WeiboConmmentMapper;
 import com.project.wangyimingcongraduation.mapper.WeiboMapper;
 import com.project.wangyimingcongraduation.mapper.WeiboUserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 /**
  * @Author: Create by FENGJINGJU
  * @Date: 2019/4/6 20:00
  */
+@Repository
 public class JsonInsertDatabaseUtil {
 
     @Autowired
