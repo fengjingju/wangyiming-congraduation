@@ -14,7 +14,7 @@ public class Index {
     @RequestMapping("/index")
     public String index(){
         System.out.println("访问首页成功");
-        return "index";
+        return "templet/index_v1";
     }
 
     @RequestMapping("/echart")
