@@ -29,8 +29,7 @@ public class AdminController {
         User userResult = adminService.adminLogin(user);
         if (userResult != null) {// 登录成功
             request.getSession().setAttribute("admin", userResult);
-//            return "success";
-            return "echart/pieChart";
+            return "success";
         } else {
             map.addAttribute("loginError", "用户名或密码错误！");
             return "index";
