@@ -15,4 +15,5 @@ public class Weibo {
     private String sender;
     private String title;
     private String content;
+    private Integer commentNum;
 }

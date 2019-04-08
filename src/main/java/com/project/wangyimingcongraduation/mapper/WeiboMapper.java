@@ -13,6 +13,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface WeiboMapper {
 
-    @Insert("INSERT INTO tbl_weibo (wid,weiboNumber,sender,title,content) VALUES (#{wid},#{weiboNumber},#{sender},#{title},#{content})")
+    @Insert("INSERT INTO tbl_weibo (wid,weiboNumber,sender,title,content,commentNum) VALUES (#{wid},#{weiboNumber},#{sender},#{title},#{content},#{commentNum})")
     void insertWeibo(Weibo weibo);
 }

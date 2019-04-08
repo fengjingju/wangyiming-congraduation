@@ -23,10 +23,10 @@ public class WeiboController {
 
     @RequestMapping("/weiboJson")
     public String out(){
-        String path="C:\\Users\\fengjingju\\Desktop\\王一名\\review_with_sentiment.json";
+        String path="C:\\Users\\fengjingju\\Desktop\\王一名\\weibo.json";
         List<String> jsonLineString = FileUtil.readFileByLine(path);
         for(String jsonLine:jsonLineString) {
-            jsonInsertDatabaseUtil.inserDatabase(WeiboComment.class, jsonLine);
+            jsonInsertDatabaseUtil.inserDatabase(Weibo.class, jsonLine);
         }
         return "导入成功";
     }
