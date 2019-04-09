@@ -19,4 +19,9 @@ public class WeiboUser {
     private String birth;
     private String introduction;
     private String tag;
+
+    // 以下为计算所得属性
+    private Integer age;// 年龄
+    private String sheng;// 省
+    private String shi;// 市
 }

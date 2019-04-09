@@ -3,6 +3,7 @@ package com.project.wangyimingcongraduation.Controller;
 import com.project.wangyimingcongraduation.domain.Weibo;
 import com.project.wangyimingcongraduation.domain.WeiboComment;
 import com.project.wangyimingcongraduation.domain.WeiboUser;
+import com.project.wangyimingcongraduation.service.WeiboUserService;
 import com.project.wangyimingcongraduation.util.FileUtil;
 import com.project.wangyimingcongraduation.util.JsonInsertDatabaseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,9 @@ public class WeiboController {
     @Autowired
     private JsonInsertDatabaseUtil jsonInsertDatabaseUtil;
 
+    @Autowired
+    private WeiboUserService weiboUserService;
+
     @RequestMapping("/weiboJson")
     public String out(){
         String path="C:\\Users\\fengjingju\\Desktop\\王一名\\weibo.json";
@@ -29,5 +33,10 @@ public class WeiboController {
             jsonInsertDatabaseUtil.inserDatabase(Weibo.class, jsonLine);
         }
         return "导入成功";
+    }
+
+    @RequestMapping("/findAllWeiboUser")
+    public List<WeiboUser> findAllWeiboUser() throws Exception {
+        return weiboUserService.findAllWeiboUser();
     }
 }

@@ -3,6 +3,7 @@ package com.project.wangyimingcongraduation.mapper;
 import com.project.wangyimingcongraduation.domain.Weibo;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
 /**
