@@ -22,7 +22,7 @@
     <link href="css/style.css?v=4.1.0" rel="stylesheet">
 </head>
 
-<body class="fixed-sidebar full-height-layout gray-bg" style="overflow:hidden">
+<body class="fixed-sidebar full-height-layout gray-bg" style="overflow:hidden;">
     <div id="wrapper">
         <!--左侧导航开始-->
         <nav class="navbar-default navbar-static-side" role="navigation">
@@ -102,9 +102,6 @@
 
     <!-- 第三方插件 -->
     <script src="js/plugins/pace/pace.min.js"></script>
-<div style="text-align:center;">
-<p>来源:<a href="http://www.mycodes.net/" target="_blank">源码之家</a></p>
-</div>
 </body>
 
 </html>
