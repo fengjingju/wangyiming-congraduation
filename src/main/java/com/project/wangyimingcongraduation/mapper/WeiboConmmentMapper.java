@@ -3,7 +3,10 @@ package com.project.wangyimingcongraduation.mapper;
 import com.project.wangyimingcongraduation.domain.WeiboComment;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * @Author: Create by FENGJINGJU

@@ -16,4 +16,5 @@ public class WeiboComment {
     private Integer commentWeiBoNumber;
     private String commentContent;
     private Integer emotionTendency;
+
 }

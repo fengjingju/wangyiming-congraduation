@@ -11,4 +11,5 @@ import java.util.List;
 public interface WeiboUserService {
 
     List<WeiboUser> findAllWeiboUser() throws Exception;
+    List<WeiboUser> getUserSex();
 }

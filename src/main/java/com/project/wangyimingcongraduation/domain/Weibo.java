@@ -16,4 +16,9 @@ public class Weibo {
     private String title;
     private String content;
     private Integer commentNum;
+
+    //需要计算的属性
+    private Integer weiboCount;
+    private  Integer commentCount;
+    private  Integer avgComment;
 }

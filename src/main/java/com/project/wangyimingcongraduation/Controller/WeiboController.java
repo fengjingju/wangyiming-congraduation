@@ -39,4 +39,6 @@ public class WeiboController {
     public List<WeiboUser> findAllWeiboUser() throws Exception {
         return weiboUserService.findAllWeiboUser();
     }
+
+    @RequestMapping("/weibo")
 }

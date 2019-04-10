@@ -53,6 +53,13 @@ public class WeiboUserServiceImpl implements WeiboUserService {
                 weiboUser.setAge(age);
             }
 
+
+            /**评论人群的性别比例*/
+            public List<WeiboUser> getUserSex();{
+                return weiboUserMapper.getUserSex();
+            }
+
+
             /** 分割地域信息 */
             String zone = weiboUser.getZone();
         }

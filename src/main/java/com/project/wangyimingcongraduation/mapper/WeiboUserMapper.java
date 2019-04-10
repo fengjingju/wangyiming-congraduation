@@ -21,4 +21,7 @@ public interface WeiboUserMapper {
 
     @Select("SELECT * FROM tbl_weibo_user")
     List<WeiboUser> findAllWeiboUser();
+
+    @Select("SELECT sex,COUNT(nickname) as countnum FROM tbl_weibo_user GROUP BY sex")
+    List<WeiboUser> getUserSex();
 }
