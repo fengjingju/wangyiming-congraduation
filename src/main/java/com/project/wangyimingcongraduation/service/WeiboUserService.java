@@ -11,5 +11,7 @@ import java.util.List;
 public interface WeiboUserService {
 
     List<WeiboUser> findAllWeiboUser() throws Exception;
+
+    /**评论人群的性别比例*/
     List<WeiboUser> getUserSex();
 }

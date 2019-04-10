@@ -2,7 +2,8 @@ package com.project.wangyimingcongraduation.service;
 
 import com.project.wangyimingcongraduation.domain.Weibo;
 
-import java.awt.*;
+import java.util.List;
+
 
 public interface WeiboService {
     List<Weibo> getWeiboCount();

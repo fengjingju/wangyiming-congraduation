@@ -40,5 +40,4 @@ public class WeiboController {
         return weiboUserService.findAllWeiboUser();
     }
 
-    @RequestMapping("/weibo")
 }

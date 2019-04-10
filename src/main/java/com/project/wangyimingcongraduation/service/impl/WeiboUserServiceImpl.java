@@ -24,6 +24,9 @@ public class WeiboUserServiceImpl implements WeiboUserService {
     @Override
     public List<WeiboUser> findAllWeiboUser() throws Exception {
         List<WeiboUser> weiboUserList = weiboUserMapper.findAllWeiboUser();
+
+        String chinaZhiXiaShi = "北京,上海,重庆,天津,海外";
+        String chinaSheng = "河北,山西,辽宁,吉林,黑龙江,江苏,浙江,安徽,福建,台湾,江西,山东,河南,湖北,湖南,广东,河南,湖北,湖南,广东,海南,四川,贵州,云南,陕西,甘肃,青海";
         for (WeiboUser weiboUser : weiboUserList) {
 
             /** 计算年龄 */
@@ -54,15 +57,31 @@ public class WeiboUserServiceImpl implements WeiboUserService {
             }
 
 
-            /**评论人群的性别比例*/
-            public List<WeiboUser> getUserSex();{
-                return weiboUserMapper.getUserSex();
-            }
-
-
             /** 分割地域信息 */
             String zone = weiboUser.getZone();
+            String[] zoneArray = zone.split(" ");
+            if (zoneArray.length == 1) {
+                if (!chinaSheng.contains(zone)) {
+                    weiboUser.setShi(zone);
+                } else {
+                    System.out.println("只有省份的没有市：" + zone);
+                }
+            } else if (zoneArray.length == 2) {
+                if (chinaZhiXiaShi.contains(zoneArray[0])) {
+                    weiboUser.setShi(zoneArray[0]);
+                } else {
+                    weiboUser.setShi(zoneArray[1]);
+                }
+            } else {
+                System.out.println("长度超过了2的：" + zone);
+            }
         }
         return weiboUserList;
     }
+
+    @Override
+    public List<WeiboUser> getUserSex() {
+        return weiboUserMapper.getUserSex();
+    }
+
 }

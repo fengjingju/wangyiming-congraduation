@@ -60,6 +60,7 @@
                     <!--mailbox-->
                     <!--新媒体政务数据展示-->
                     <li>
+                        <a href="/hello"><i class="fa fa-table"></i> <span class="nav-label">王一名看这里，左侧跳转演示</span></a>
                         <a href="#"><i class="fa fa-table"></i> <span class="nav-label">微博原文展示</span></a>
                         <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">政府微博活跃度展示</span></a>
                         <a href="#"><i class="fa fa-desktop"></i> <span class="nav-label">微博评论聚集度展示</span></a>
