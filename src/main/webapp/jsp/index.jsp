@@ -48,7 +48,7 @@
                         <span class="ng-scope">总览</span>
                     </li>
                     <li>
-                        <a class="J_menuItem" href="index_v1.html">
+                        <a class="J_menuItem" href="/index">
                             <i class="fa fa-home"></i>
                             <span class="nav-label">主页</span>
                         </a>
@@ -60,19 +60,18 @@
                     <!--mailbox-->
                     <!--新媒体政务数据展示-->
                     <li>
-                        <a href="/hello"><i class="fa fa-table"></i> <span class="nav-label">王一名看这里，左侧跳转演示</span></a>
-                        <a href="#"><i class="fa fa-table"></i> <span class="nav-label">微博原文展示</span></a>
-                        <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">政府微博活跃度展示</span></a>
-                        <a href="#"><i class="fa fa-desktop"></i> <span class="nav-label">微博评论聚集度展示</span></a>
+                        <a href="/weibo"><i class="fa fa-table"></i> <span class="nav-label">微博原文展示</span></a>
+                        <a href="/weibosum"><i class="fa fa-edit"></i> <span class="nav-label">政府微博活跃度展示</span></a>
+                        <a href="/weibocommentsum"><i class="fa fa-desktop"></i> <span class="nav-label">微博评论聚集度展示</span></a>
                     </li>
                     <li class="line dk"></li>
                     <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
                         <span class="ng-scope">新媒体政务效能展示</span>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa fa-bar-chart-o"></i> <span class="nav-label">评论人群特征分析</span></a>
-                        <a href="#"><i class="fa fa-flask"></i> <span class="nav-label">评论人群分布分析</span></a>
-                        <a href="#"><i class="fa fa-magic"></i> <span class="nav-label">评论舆情倾向分析</span></a>
+                        <a href="/user"><i class="fa fa fa-bar-chart-o"></i> <span class="nav-label">评论人群特征分析</span></a>
+                        <a href="/userarea"><i class="fa fa-flask"></i> <span class="nav-label">评论人群分布分析</span></a>
+                        <a href="/useremotion"><i class="fa fa-magic"></i> <span class="nav-label">评论舆情倾向分析</span></a>
                     </li>
                     </li>
                 </ul>

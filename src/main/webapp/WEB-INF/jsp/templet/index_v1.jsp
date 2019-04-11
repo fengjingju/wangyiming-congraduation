@@ -25,7 +25,7 @@
     <%@ include file="/jsp/index.jsp" %>
 </div>
 
-    <div class="wrapper wrapper-content" style="float: right;width: 81%">
+    <div class="wrapper wrapper-content" style="float: right;width: 51%">
         <div class="row">
             <div class="col-sm-10">
                 <div class="row">

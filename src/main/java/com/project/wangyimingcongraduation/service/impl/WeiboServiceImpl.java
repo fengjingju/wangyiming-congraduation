@@ -19,19 +19,16 @@ public class WeiboServiceImpl implements WeiboService {
 
     @Override
     public List<Weibo> getWeiboCount(){
-        /*各个政府部门发微博的总数统计*/
         return weiboMapper.getWeiboCount();
     }
 
     @Override
     public List<Weibo> getCommentCount(){
-        /*各个政府部门一共收到的微博评论数量*/
         return weiboMapper.getCommentCount();
     }
 
     @Override
     public Integer getAvgComment(Integer weiboCount,Integer commentCount){
-        /*各政府平均每条微博得到的评论数量*/
         return commentCount/weiboCount;
     }
 

@@ -83,5 +83,4 @@ public class WeiboUserServiceImpl implements WeiboUserService {
     public List<WeiboUser> getUserSex() {
         return weiboUserMapper.getUserSex();
     }
-
 }

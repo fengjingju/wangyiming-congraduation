@@ -10,6 +10,7 @@ import java.util.List;
  */
 public interface WeiboUserService {
 
+    /**评论人群的年龄，地域分布*/
     List<WeiboUser> findAllWeiboUser() throws Exception;
 
     /**评论人群的性别比例*/
