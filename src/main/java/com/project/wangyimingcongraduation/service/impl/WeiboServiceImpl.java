@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.validation.constraints.Max;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class WeiboServiceImpl implements WeiboService {
@@ -28,8 +30,15 @@ public class WeiboServiceImpl implements WeiboService {
     }
 
     @Override
-    public Integer getAvgComment(Integer weiboCount,Integer commentCount){
-        return commentCount/weiboCount;
+    public List<Weibo> getAvgComment() {
+        List<Weibo> weiboList = weiboMapper.getSenderList();
+        List<Weibo> weiboCommentCountList = weiboMapper.getCommentCount();
+        List<Weibo> weiboCountList = weiboMapper.getWeiboCount();
+        Map<String, Integer> weiboCommentCountMap = new HashMap<>(weiboCommentCountList.size());
+        Map<String, Integer> weiboCountMap = new HashMap<>(weiboCountList.size());
+        for (Weibo weibo : weiboList) {
+            weibo.setAvgComment(weiboCommentCountMap.get(weibo.getSender()) / weiboCountMap.get(weibo.getSender()));
+        }
+        return weiboList;
     }
-
 }

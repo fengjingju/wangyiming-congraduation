@@ -17,7 +17,7 @@ public class Weibo {
     private String content;
     private Integer commentNum;
 
-    //需要计算的属性
+    //sql语句得到属性
     private Integer weiboCount;
     private  Integer commentCount;
     private  Integer avgComment;

@@ -7,9 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author create by FENGJINGJU
@@ -26,7 +24,16 @@ public class WeiboUserServiceImpl implements WeiboUserService {
         List<WeiboUser> weiboUserList = weiboUserMapper.findAllWeiboUser();
 
         String chinaZhiXiaShi = "北京,上海,重庆,天津,海外";
-        String chinaSheng = "河北,山西,辽宁,吉林,黑龙江,江苏,浙江,安徽,福建,台湾,江西,山东,河南,湖北,湖南,广东,河南,湖北,湖南,广东,海南,四川,贵州,云南,陕西,甘肃,青海";
+        String chinaSheng = "河北:石家庄,山西:太原,辽宁:沈阳,吉林:长春,黑龙江:哈尔滨,江苏:南京,浙江:杭州,安徽:合肥,福建:福州,台湾:台北,江西:南昌,山东:济南,河南:郑州,湖北:武汉,湖南:长沙,广东:广州,海南:海口,四川:成都,贵州:贵阳,云南:昆明,陕西:西安,甘肃:兰州,青海:西宁";
+
+        String[] shengAndShenghui = chinaSheng.split(",");
+        // map<省，省会>
+        Map<String,String> shengAndShenghuiMap = new HashMap<>(shengAndShenghui.length);
+        for(String sas:shengAndShenghui){
+            String[] temp = sas.split(":");
+            shengAndShenghuiMap.put(temp[0],temp[1]);
+        }
+
         for (WeiboUser weiboUser : weiboUserList) {
 
             /** 计算年龄 */
@@ -61,10 +68,15 @@ public class WeiboUserServiceImpl implements WeiboUserService {
             String zone = weiboUser.getZone();
             String[] zoneArray = zone.split(" ");
             if (zoneArray.length == 1) {
-                if (!chinaSheng.contains(zone)) {
+                if (!shengAndShenghuiMap.keySet().contains(zone)) {
                     weiboUser.setShi(zone);
                 } else {
-                    System.out.println("只有省份的没有市：" + zone);
+                    String shiTemp = shengAndShenghuiMap.get(zone);
+                    if(shiTemp != null) {
+                        weiboUser.setShi(shiTemp);
+                    }else {
+                        System.out.println("超出范围的：" + zone);
+                    }
                 }
             } else if (zoneArray.length == 2) {
                 if (chinaZhiXiaShi.contains(zoneArray[0])) {

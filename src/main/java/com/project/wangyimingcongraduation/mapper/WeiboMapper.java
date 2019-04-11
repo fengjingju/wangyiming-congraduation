@@ -25,6 +25,9 @@ public interface WeiboMapper {
     @Select("SELECT sender , SUM(commentNum) as commentCount FROM tbl_weibo GROUP BY sender")
     List<Weibo> getCommentCount();
 
+    @Select("SELECT sender FROM tbl_weibo GROUP BY sender")
+    List<Weibo> getSenderList();
+
     Integer getAvgComment(Integer weiboCount,Integer commentCount);
 
 }

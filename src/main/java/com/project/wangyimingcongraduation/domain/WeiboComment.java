@@ -17,4 +17,7 @@ public class WeiboComment {
     private String commentContent;
     private Integer emotionTendency;
 
+
+    // sql语句得到字段
+    private Integer countnum;
 }

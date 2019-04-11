@@ -12,6 +12,6 @@ public interface WeiboService {
     /**各个政府部门一共收到的微博评论数量*/
     List<Weibo> getCommentCount();
 
-    /**各个政府部门一共收到的微博评论数量*/
-    Integer getAvgComment(Integer weiboCount,Integer commentCount);
+    /**平均各个政府部门一共收到的微博评论数量*/
+    List<Weibo> getAvgComment();
 }
