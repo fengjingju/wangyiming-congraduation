@@ -19,12 +19,6 @@
     <!--echart-->
     <script src="/incubator-echarts-4.2.1/dist/echarts.js"></script>
 
-    <link rel="shortcut icon" href="favicon.ico"> <link href="css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
-    <link href="css/font-awesome.css?v=4.4.0" rel="stylesheet">
-    <link href="css/plugins/iCheck/custom.css" rel="stylesheet">
-    <link href="css/animate.css" rel="stylesheet">
-    <link href="css/style.css?v=4.1.0" rel="stylesheet">
-
 </head>
 <body class="gray-bg">
 
@@ -32,20 +26,7 @@
     <%@ include file="/jsp/index.jsp" %>
 </div>
 
-<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
-<%--<div class="col-sm-10" style="margin-top:15px;">--%>
-    <%--<div class="ibox float-e-margins">--%>
-        <%--<div class="ibox-title">--%>
-            <%--<h5>基本表单</h5>--%>
-        <%--</div>--%>
-        <%--<div class="ibox-content">--%>
-            <%--<!-- 为ECharts准备一个具备大小（宽高）的Dom -->--%>
-            <%--<div id="main" style="width: 500px;height:400px;"></div>--%>
-        <%--</div>--%>
-    <%--</div>--%>
-<%--</div>--%>
-
-<div style="margin:15px;float:left;border-color:red;width: 85%;height: 100%;">
+<div style="margin:15px;float:left;width: 85%;height: 100%;">
     <div style="background-color: #f6f8f8;height: 45px;border: 1px solid #dee5e7;padding: 12px;">
         <h5 style="font-family: 微软雅黑;color:#343434;font-size: 13px;">评论人群特征分析</h5>
     </div>
