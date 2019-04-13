@@ -18,4 +18,8 @@ public class GsonUtil {
     public static <T> T transferJsonStringToObject(String jsonString, Class<T> t) {
         return new Gson().fromJson(jsonString, t);
     }
+
+    public String transferJsonStringFromListOrObject(Object object){
+        return new Gson().toJson(object);
+    }
 }
