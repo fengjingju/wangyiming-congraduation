@@ -15,7 +15,7 @@ public interface WeiboUserService {
     List<WeiboUser> findAllWeiboUser() throws Exception;
 
     /** 获取不同年龄阶段的人评论人数 */
-    List<Integer> peopleAgeFeature() throws ParseException;
+    List<Double> peopleAgeFeature() throws ParseException;
 
     /**评论人群的性别比例*/
     List<WeiboUser> getUserSex();

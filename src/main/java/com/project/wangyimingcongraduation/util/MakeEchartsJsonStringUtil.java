@@ -7,13 +7,13 @@ import java.util.Map;
  * @Author: Create by FENGJINGJU
  * @Date: 2019/4/13 17:52
  */
-public class MakeJsonStringUtil {
+public class MakeEchartsJsonStringUtil {
 
     /**
      * 根据入参String返回echart需要json格式String
      *
      * @param fieldAndValueString  格式：field1:value1,field2:value2;field1:value1,field2:value2
-     * @return
+     * @return 例：{value: 60, name: '访问'},{value: 40, name: '咨询'}
      */
     public static String makeJsonArrayString(String fieldAndValueString) {
         String[] fieldAndValueArray = fieldAndValueString.split(";");
@@ -52,5 +52,25 @@ public class MakeJsonStringUtil {
         }
         stringBuffer.append("]");
         return stringBuffer.toString().replace(",},]", "}]");
+    }
+
+    /**
+     * 根据入参String返回echart需要标题格式String
+     *
+     * @param titleString  格式：title1,title2,title3....(逗号分隔)
+     * @return 例：['点击','访问','咨询','订单']
+     */
+    public static String makeEchartTitle(String titleString){
+        String[] titleArray = titleString.split(",");
+        StringBuffer stringBuffer = new StringBuffer();
+        stringBuffer.append("[");
+        for(String title:titleArray){
+            stringBuffer.append("'");
+            stringBuffer.append(title);
+            stringBuffer.append("'");
+            stringBuffer.append(",");
+        }
+        stringBuffer.append("]");
+        return stringBuffer.toString().replace(",]", "]");
     }
 }

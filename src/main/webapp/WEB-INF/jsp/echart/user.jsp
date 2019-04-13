@@ -26,7 +26,7 @@
     <%@ include file="/jsp/index.jsp" %>
 </div>
 
-<div style="margin:15px;float:left;width: 85%;height: 100%;">
+<div style="margin:15px;float:left;width: 79%;height: 100%;">
     <div style="background-color: #f6f8f8;height: 45px;border: 1px solid #dee5e7;padding: 12px;">
         <h5 style="font-family: 微软雅黑;color:#343434;font-size: 13px;">评论人群特征分析</h5>
     </div>
@@ -58,7 +58,7 @@
             }
         },
         legend: {
-            data: ['18岁及以下','点击','访问','咨询','订单']
+            data: ${peopleAgeFeatureTitle}
         },
         series: [
             {

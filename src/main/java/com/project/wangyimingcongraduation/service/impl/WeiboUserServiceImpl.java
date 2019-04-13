@@ -95,8 +95,8 @@ public class WeiboUserServiceImpl implements WeiboUserService {
     }
 
     @Override
-    public List<Integer> peopleAgeFeature() throws ParseException {
-        List<Integer> resultList = new ArrayList<>();
+    public List<Double> peopleAgeFeature() throws ParseException {
+        List<Double> resultList = new ArrayList<>();
 
         List<WeiboUser> weiboUserList = weiboUserMapper.findAllWeiboUser();
         int underEighteenNum = 0;// 18岁以下
@@ -148,17 +148,17 @@ public class WeiboUserServiceImpl implements WeiboUserService {
             }
         }
 
-        double underEighteenNumPersent = new BigDecimal((float)underEighteenNum/sumPeople).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
-        double eighteenToTwentyFourPersent = new BigDecimal((float)eighteenToTwentyFour/sumPeople).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
-        double twentyFiveToTherityFourPersent = new BigDecimal((float)twentyFiveToTherityFour/sumPeople).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
-        double therityFiveToFortyFourPersent = new BigDecimal((float)therityFiveToFortyFour/sumPeople).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
-        double fortyFiveAndMoreThanFortyFivePersent = new BigDecimal((float)fortyFiveAndMoreThanFortyFive/sumPeople).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+        double underEighteenNumPersent = new BigDecimal((float)underEighteenNum*100/sumPeople).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+        double eighteenToTwentyFourPersent = new BigDecimal((float)eighteenToTwentyFour*100/sumPeople).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+        double twentyFiveToTherityFourPersent = new BigDecimal((float)twentyFiveToTherityFour*100/sumPeople).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+        double therityFiveToFortyFourPersent = new BigDecimal((float)therityFiveToFortyFour*100/sumPeople).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+        double fortyFiveAndMoreThanFortyFivePersent = new BigDecimal((float)fortyFiveAndMoreThanFortyFive*100/sumPeople).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
 
-        resultList.add((underEighteenNum*100)/(sumPeople));
-        resultList.add((eighteenToTwentyFour*100)/(sumPeople));
-        resultList.add((twentyFiveToTherityFour*100)/(sumPeople));
-        resultList.add((therityFiveToFortyFour*100)/(sumPeople));
-        resultList.add((fortyFiveAndMoreThanFortyFive*100)/(sumPeople));
+        resultList.add(underEighteenNumPersent);
+        resultList.add(eighteenToTwentyFourPersent);
+        resultList.add(twentyFiveToTherityFourPersent);
+        resultList.add(therityFiveToFortyFourPersent);
+        resultList.add(fortyFiveAndMoreThanFortyFivePersent);
 
         return resultList;
     }
