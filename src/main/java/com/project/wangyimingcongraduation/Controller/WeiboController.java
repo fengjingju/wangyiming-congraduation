@@ -3,6 +3,8 @@ package com.project.wangyimingcongraduation.Controller;
 import com.project.wangyimingcongraduation.domain.Weibo;
 import com.project.wangyimingcongraduation.domain.WeiboComment;
 import com.project.wangyimingcongraduation.domain.WeiboUser;
+import com.project.wangyimingcongraduation.service.WeiboCommentService;
+import com.project.wangyimingcongraduation.service.WeiboService;
 import com.project.wangyimingcongraduation.service.WeiboUserService;
 import com.project.wangyimingcongraduation.util.FileUtil;
 import com.project.wangyimingcongraduation.util.JsonInsertDatabaseUtil;
@@ -24,6 +26,8 @@ public class WeiboController {
 
     @Autowired
     private WeiboUserService weiboUserService;
+    private WeiboService weiboService;
+    private WeiboCommentService weiboCommentService;
 
     @RequestMapping("/weiboJson")
     public String out(){
@@ -38,6 +42,26 @@ public class WeiboController {
     @RequestMapping("/findAllWeiboUser")
     public List<WeiboUser> findAllWeiboUser() throws Exception {
         return weiboUserService.findAllWeiboUser();
+    }
+
+    @RequestMapping("getWeiboCount")
+    public List<Weibo> getWeiboCount(){
+        return weiboService.getWeiboCount();
+    }
+
+    @RequestMapping("getCommentCount")
+    public List<Weibo> getCommentCount(){
+        return weiboService.getCommentCount();
+    }
+
+    @RequestMapping("/getEmotionTendency")
+    public List<WeiboComment> getEmotionTendency(){
+        return weiboCommentService.getEmotionTendency();
+    }
+
+    @RequestMapping("getUserSex")
+    List<WeiboUser> getUserSex(){
+        return weiboUserService.getUserSex();
     }
 
 }
