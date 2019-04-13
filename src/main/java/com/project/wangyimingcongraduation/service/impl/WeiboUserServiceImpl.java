@@ -6,6 +6,9 @@ import com.project.wangyimingcongraduation.service.WeiboUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
@@ -28,10 +31,10 @@ public class WeiboUserServiceImpl implements WeiboUserService {
 
         String[] shengAndShenghui = chinaSheng.split(",");
         // map<省，省会>
-        Map<String,String> shengAndShenghuiMap = new HashMap<>(shengAndShenghui.length);
-        for(String sas:shengAndShenghui){
+        Map<String, String> shengAndShenghuiMap = new HashMap<>(shengAndShenghui.length);
+        for (String sas : shengAndShenghui) {
             String[] temp = sas.split(":");
-            shengAndShenghuiMap.put(temp[0],temp[1]);
+            shengAndShenghuiMap.put(temp[0], temp[1]);
         }
 
         for (WeiboUser weiboUser : weiboUserList) {
@@ -72,9 +75,9 @@ public class WeiboUserServiceImpl implements WeiboUserService {
                     weiboUser.setShi(zone);
                 } else {
                     String shiTemp = shengAndShenghuiMap.get(zone);
-                    if(shiTemp != null) {
+                    if (shiTemp != null) {
                         weiboUser.setShi(shiTemp);
-                    }else {
+                    } else {
                         System.out.println("超出范围的：" + zone);
                     }
                 }
@@ -89,6 +92,75 @@ public class WeiboUserServiceImpl implements WeiboUserService {
             }
         }
         return weiboUserList;
+    }
+
+    @Override
+    public List<Integer> peopleAgeFeature() throws ParseException {
+        List<Integer> resultList = new ArrayList<>();
+
+        List<WeiboUser> weiboUserList = weiboUserMapper.findAllWeiboUser();
+        int underEighteenNum = 0;// 18岁以下
+        int eighteenToTwentyFour = 0;// 18-24
+        int twentyFiveToTherityFour = 0;// 25-34
+        int therityFiveToFortyFour = 0;// 35-44
+        int fortyFiveAndMoreThanFortyFive = 0;// 45及以上
+        int sumPeople = 0;// 总人数
+
+        for (WeiboUser weiboUser : weiboUserList) {
+
+            /** 计算年龄 */
+            String birth = weiboUser.getBirth();
+            Calendar cal = Calendar.getInstance();
+            int yearNow = cal.get(Calendar.YEAR);  //当前年份
+            int monthNow = cal.get(Calendar.MONTH);  //当前月份
+            int dayOfMonthNow = cal.get(Calendar.DAY_OF_MONTH); //当前日期
+            if (birth != null && birth.contains("-") && (birth.startsWith("1") || birth.startsWith("2")) && birth.length() == 10) {
+                Date birthDay = new SimpleDateFormat("yyyy-MM-dd").parse(birth);
+                if (cal.before(birthDay)) { //出生日期晚于当前时间，无法计算
+                    throw new IllegalArgumentException(
+                            "The birthDay is before Now.It's unbelievable!");
+                }
+                cal.setTime(birthDay);
+                int yearBirth = cal.get(Calendar.YEAR);
+                int monthBirth = cal.get(Calendar.MONTH);
+                int dayOfMonthBirth = cal.get(Calendar.DAY_OF_MONTH);
+                int age = yearNow - yearBirth;   //计算整岁数
+                if (monthNow <= monthBirth) {
+                    if (monthNow == monthBirth) {
+                        if (dayOfMonthNow < dayOfMonthBirth) age--;//当前日期在生日之前，年龄减一
+                    } else {
+                        age--;//当前月份在生日之前，年龄减一
+                    }
+                }
+
+                if (age < 18) {
+                    underEighteenNum++;
+                } else if (age >= 18 && age <= 24) {
+                    eighteenToTwentyFour++;
+                } else if (age >= 25 && age <= 34) {
+                    twentyFiveToTherityFour++;
+                } else if (age >= 35 && age <= 44) {
+                    therityFiveToFortyFour++;
+                } else if (age >= 45) {
+                    fortyFiveAndMoreThanFortyFive++;
+                }
+                sumPeople++;
+            }
+        }
+
+        double underEighteenNumPersent = new BigDecimal((float)underEighteenNum/sumPeople).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+        double eighteenToTwentyFourPersent = new BigDecimal((float)eighteenToTwentyFour/sumPeople).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+        double twentyFiveToTherityFourPersent = new BigDecimal((float)twentyFiveToTherityFour/sumPeople).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+        double therityFiveToFortyFourPersent = new BigDecimal((float)therityFiveToFortyFour/sumPeople).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+        double fortyFiveAndMoreThanFortyFivePersent = new BigDecimal((float)fortyFiveAndMoreThanFortyFive/sumPeople).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+
+        resultList.add((underEighteenNum*100)/(sumPeople));
+        resultList.add((eighteenToTwentyFour*100)/(sumPeople));
+        resultList.add((twentyFiveToTherityFour*100)/(sumPeople));
+        resultList.add((therityFiveToFortyFour*100)/(sumPeople));
+        resultList.add((fortyFiveAndMoreThanFortyFive*100)/(sumPeople));
+
+        return resultList;
     }
 
     @Override

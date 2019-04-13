@@ -12,6 +12,11 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @Controller
 public class Test {
+    @RequestMapping("/pieChart")
+    public String out(){
+        return "echart/pieChart";
+    }
+
     @RequestMapping("/weibo")
     public String outWeibo(){
         System.out.println("微博原文展示");

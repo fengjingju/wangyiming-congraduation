@@ -9,7 +9,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
-    <title>微博原文展示</title>
+    <title>评论人群特征分析</title>
 
     <!--bootstrap-->
     <link href="/bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet">
@@ -19,6 +19,12 @@
     <!--echart-->
     <script src="/incubator-echarts-4.2.1/dist/echarts.js"></script>
 
+    <link rel="shortcut icon" href="favicon.ico"> <link href="css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="css/font-awesome.css?v=4.4.0" rel="stylesheet">
+    <link href="css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/style.css?v=4.1.0" rel="stylesheet">
+
 </head>
 <body class="gray-bg">
 
@@ -27,16 +33,37 @@
 </div>
 
 <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
-<div id="main" style="width: 500px;height:400px;float: left;margin-left: 300px;"></div>
+<%--<div class="col-sm-10" style="margin-top:15px;">--%>
+    <%--<div class="ibox float-e-margins">--%>
+        <%--<div class="ibox-title">--%>
+            <%--<h5>基本表单</h5>--%>
+        <%--</div>--%>
+        <%--<div class="ibox-content">--%>
+            <%--<!-- 为ECharts准备一个具备大小（宽高）的Dom -->--%>
+            <%--<div id="main" style="width: 500px;height:400px;"></div>--%>
+        <%--</div>--%>
+    <%--</div>--%>
+<%--</div>--%>
+
+<div style="margin:15px;float:left;border-color:red;width: 85%;height: 100%;">
+    <div style="background-color: #f6f8f8;height: 45px;border: 1px solid #dee5e7;padding: 12px;">
+        <h5 style="font-family: 微软雅黑;color:#343434;font-size: 13px;">评论人群特征分析</h5>
+    </div>
+    <div style="background-color: white;padding: 25px;height: 100%;border-left: 1px solid #dee5e7;border-right: 1px solid #dee5e7;border-bottom: 1px solid #dee5e7;">
+        <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+        <div id="main" style="width: 70%;height:70%;margin: 0 auto;"></div>
+    </div>
+</div>
+
 <script type="text/javascript">
     // 基于准备好的dom，初始化echarts实例
     var myChart = echarts.init(document.getElementById('main'));
 
     // 指定图表的配置项和数据
-    var option = option = {
+    var option = {
         title: {
-            text: '漏斗图',
-            subtext: '纯属虚构'
+            text: '评论人群特征分析',
+            subtext: '评论人群特征分析'
         },
         tooltip: {
             trigger: 'item',
@@ -50,7 +77,7 @@
             }
         },
         legend: {
-            data: ['展现','点击','访问','咨询','订单']
+            data: ['18岁及以下','点击','访问','咨询','订单']
         },
         series: [
             {
@@ -111,13 +138,7 @@
                         borderWidth: 2
                     }
                 },
-                data: [
-                    {value: 30, name: '访问'},
-                    {value: 10, name: '咨询'},
-                    {value: 5, name: '订单'},
-                    {value: 50, name: '点击'},
-                    {value: 80, name: '展现'}
-                ]
+                data: ${peopleAgeFeature}
             }
         ]
     };

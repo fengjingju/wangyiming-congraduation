@@ -69,7 +69,7 @@
                         <span class="ng-scope">新媒体政务效能展示</span>
                     </li>
                     <li>
-                        <a href="/user"><i class="fa fa fa-bar-chart-o"></i> <span class="nav-label">评论人群特征分析</span></a>
+                        <a href="/peopleAgeFeature"><i class="fa fa fa-bar-chart-o"></i> <span class="nav-label">评论人群特征分析</span></a>
                         <a href="/userarea"><i class="fa fa-flask"></i> <span class="nav-label">评论人群分布分析</span></a>
                         <a href="/useremotion"><i class="fa fa-magic"></i> <span class="nav-label">评论舆情倾向分析</span></a>
                     </li>

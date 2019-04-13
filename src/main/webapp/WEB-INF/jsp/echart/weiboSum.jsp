@@ -19,6 +19,12 @@
     <!--echart-->
     <script src="/incubator-echarts-4.2.1/dist/echarts.js"></script>
 
+    <link rel="shortcut icon" href="favicon.ico"> <link href="css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="css/font-awesome.css?v=4.4.0" rel="stylesheet">
+    <link href="css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/style.css?v=4.1.0" rel="stylesheet">
+
 </head>
 <body class="gray-bg">
 
@@ -27,7 +33,18 @@
 </div>
 
 <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
-<div id="main" style="width: 500px;height:400px;float: left;margin-left: 300px;"></div>
+<div class="col-sm-12">
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>基本表单</h5>
+        </div>
+        <div class="ibox-content">
+            <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+            <div id="main" style="width: 400px;height:300px;"></div>
+        </div>
+    </div>
+</div>
+
 <script type="text/javascript">
     // 基于准备好的dom，初始化echarts实例
     var myChart = echarts.init(document.getElementById('main'));
