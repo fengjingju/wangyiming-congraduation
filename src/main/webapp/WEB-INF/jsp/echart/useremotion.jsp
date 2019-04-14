@@ -39,7 +39,7 @@
 <script type="text/javascript">
     // 基于准备好的dom，初始化echarts实例
     var myChart = echarts.init(document.getElementById('chartone'));
-    var myChart = echarts.init(document.getElementById('charttwo'));
+    var myChart2 = echarts.init(document.getElementById('charttwo'));
     // 指定图表的配置项和数据
     var option =  {
         tooltip: {
@@ -212,7 +212,7 @@
             }
         ]
     };
-    myChart.setOption(optiontwo);
+    myChart2.setOption(optiontwo);
 </script>
 </body>
 </html>
