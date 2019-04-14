@@ -19,6 +19,8 @@
     <!--echart-->
     <script src="/incubator-echarts-4.2.1/dist/echarts.js"></script>
     <script src="/incubator-echarts-4.2.1/dist/china.js"></script>
+    <!-- 引入 echart - macarons 主题 -->
+    <script src="/incubator-echarts-4.2.1/dist/macarons.js"></script>
 
     <link rel="shortcut icon" href="favicon.ico"> <link href="css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
     <link href="css/font-awesome.css?v=4.4.0" rel="stylesheet">
@@ -46,7 +48,7 @@
 <script type="text/javascript">
 
     // 基于准备好的dom，初始化echarts实例
-    var myChart = echarts.init(document.getElementById('main'));
+    var myChart = echarts.init(document.getElementById('main'),'macarons');
 
     var data = [
         {name: '海门', value: 9},
@@ -447,9 +449,7 @@
         return res;
     };
 
-
-    // 指定图表的配置项和数据
-    var option = {
+    option = {
         title: {
             text: '全国主要城市空气质量 - 百度地图',
             subtext: 'data from PM25.in',
