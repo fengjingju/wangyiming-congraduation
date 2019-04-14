@@ -18,6 +18,7 @@
 
     <!--echart-->
     <script src="/incubator-echarts-4.2.1/dist/echarts.js"></script>
+    <script src="/incubator-echarts-4.2.1/dist/china.js"></script>
 
     <link rel="shortcut icon" href="favicon.ico"> <link href="css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
     <link href="css/font-awesome.css?v=4.4.0" rel="stylesheet">
@@ -43,6 +44,7 @@
 </div>
 
 <script type="text/javascript">
+
     // 基于准备好的dom，初始化echarts实例
     var myChart = echarts.init(document.getElementById('main'));
 
@@ -444,6 +446,7 @@
         }
         return res;
     };
+
 
     // 指定图表的配置项和数据
     var option = {
