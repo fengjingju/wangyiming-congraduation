@@ -53,7 +53,7 @@ public class WeiboController {
         String underEighteenTitle = "18岁及以下";
         String eighteenToTwentyFourTitle = "18岁-24岁";
         String twentyFiveToTherityFourTitle = "25岁-34岁";
-        String therityFiveToFortyFourTitle = "35岁-44";
+        String therityFiveToFortyFourTitle = "35岁-44岁";
         String fortyFiveAndMoreThanFortyFiveTitle = "45岁及以上";
 
         double underEighteenNumPersent = peopleAgeFeatureList.get(0);

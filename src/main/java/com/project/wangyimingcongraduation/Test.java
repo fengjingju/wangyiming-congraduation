@@ -50,7 +50,7 @@ public class Test {
     @RequestMapping("/useremotion")
     public String outUseremotion(){
         System.out.println("评论情感分布");
-        return "echart/useremoion";
+        return "echart/useremotion";
     }
 
 }
