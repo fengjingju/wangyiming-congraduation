@@ -10,5 +10,5 @@ public interface WeiboCommentService {
     List<WeiboComment> getEmotionTendency();
 
     /**通过sender分类的情感评论数据*/
-    List<WeiboComment> getclssifyEmotion();
+    List<WeiboComment> getclassifyEmotion();
 }

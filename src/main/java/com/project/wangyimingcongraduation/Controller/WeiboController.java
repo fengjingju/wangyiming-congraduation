@@ -113,39 +113,45 @@ public class WeiboController {
             Integer weiboCount = weiboList.get(i).getWeiboCount();
             allWeiboCount = allWeiboCount + weiboCount;
         }
-        for (int i=0;i<weiboList.size();i++){
+        for (int i = 0; i < weiboList.size(); i++) {
             Integer weiboCount = weiboList.get(i).getWeiboCount();
-            switch (i){
-                case 0:{
-                    makeString+="value:" + weiboCount + ",name:" + grovernment0;
-                    makeString2 = allWeiboCount +",";
-                    makeString_2 = String.valueOf(allWeiboCount - allWeiboCount)+",";
-                }break;
-                case 1:{
-                    makeString+=";value:" + weiboCount + ",name:" + grovernment1;
-                    makeString2 = makeString2 + weiboCount +",";
-                    makeString_2 = makeString2 + String.valueOf(allWeiboCount - weiboCount) +",";
-                }break;
-                case 2:{
-                    makeString+=";value:" + weiboCount + ",name:" + grovernment2;
-                    makeString2 = makeString2 + weiboCount +",";
-                    makeString_2 = makeString2 + String.valueOf(allWeiboCount - weiboCount) +",";
-                }break;
-                case 3:{
-                    makeString+=";value:" + weiboCount + ",name:" + grovernment3;
-                    makeString2 = makeString2 + weiboCount +",";
-                    makeString_2 = makeString2 + String.valueOf(allWeiboCount - weiboCount) +",";
-                }break;
-                case 4:{
-                    makeString+=";value:" + weiboCount + ",name:" + grovernment4;
-                    makeString2 = makeString2 + weiboCount +",";
-                    makeString_2 = makeString2 + String.valueOf(allWeiboCount - weiboCount) +",";
-                }break;
-                case 5:{
-                    makeString+=";value:" + weiboCount + ",name:" + grovernment5;
-                    makeString2 = makeString2 + weiboCount +",";
-                    makeString_2 = makeString2 + String.valueOf(allWeiboCount - weiboCount) +",";
-                }break;
+            switch (i) {
+                case 0: {
+                    makeString += "value:" + weiboCount + ",name:" + grovernment0;
+                    makeString2 = allWeiboCount + ",";
+                    makeString_2 = String.valueOf(allWeiboCount - allWeiboCount) + ",";
+                }
+                break;
+                case 1: {
+                    makeString += ";value:" + weiboCount + ",name:" + grovernment1;
+                    makeString2 = makeString2 + weiboCount + ",";
+                    makeString_2 = makeString2 + String.valueOf(allWeiboCount - weiboCount) + ",";
+                }
+                break;
+                case 2: {
+                    makeString += ";value:" + weiboCount + ",name:" + grovernment2;
+                    makeString2 = makeString2 + weiboCount + ",";
+                    makeString_2 = makeString2 + String.valueOf(allWeiboCount - weiboCount) + ",";
+                }
+                break;
+                case 3: {
+                    makeString += ";value:" + weiboCount + ",name:" + grovernment3;
+                    makeString2 = makeString2 + weiboCount + ",";
+                    makeString_2 = makeString2 + String.valueOf(allWeiboCount - weiboCount) + ",";
+                }
+                break;
+                case 4: {
+                    makeString += ";value:" + weiboCount + ",name:" + grovernment4;
+                    makeString2 = makeString2 + weiboCount + ",";
+                    makeString_2 = makeString2 + String.valueOf(allWeiboCount - weiboCount) + ",";
+                }
+                break;
+                case 5: {
+                    makeString += ";value:" + weiboCount + ",name:" + grovernment5;
+                    makeString2 = makeString2 + weiboCount + ",";
+                    makeString_2 = makeString2 + String.valueOf(allWeiboCount - weiboCount) + ",";
+                }
+                break;
             }
         }
 
@@ -210,7 +216,7 @@ public class WeiboController {
 
     @RequestMapping("/getclassifyEmotion")
     List<WeiboComment> getclassifyEmption(){
-        return weiboCommentService.getclssifyEmotion();
+        return weiboCommentService.getclassifyEmotion();
     }
 
 }

@@ -11,6 +11,7 @@ import java.util.List;
 
 @Service
 public class WeiboCommentServiceImpl implements WeiboCommentService {
+
     @Autowired
     private WeiboConmmentMapper weiboConmmentMapper;
 
@@ -22,7 +23,6 @@ public class WeiboCommentServiceImpl implements WeiboCommentService {
 
     @Override
     public List<WeiboComment> getclassifyEmotion(){
-
         return weiboConmmentMapper.getclassifyEmotion();
     }
 }
