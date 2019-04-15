@@ -18,6 +18,7 @@
 
     <!--echart-->
     <script src="/incubator-echarts-4.2.1/dist/echarts.js"></script>
+    <script src="/incubator-echarts-4.2.1/dist/echartsOld.js"></script>
     <script src="/incubator-echarts-4.2.1/dist/china.js"></script>
     <!-- 引入 echart - macarons 主题 -->
     <script src="/incubator-echarts-4.2.1/dist/macarons.js"></script>
@@ -35,13 +36,13 @@
     <%@ include file="/jsp/index.jsp" %>
 </div>
 
-<div style="margin:15px;float:left;border-color:red;width: 85%;height: 100%;">
+<div style="margin:15px;float:left;border-color:red;width: 82%;height: 100%;">
     <div style="background-color: #f6f8f8;height: 45px;border: 1px solid #dee5e7;padding: 12px;">
         <h5 style="font-family: 微软雅黑;color:#343434;font-size: 13px;">评论人群特征分析</h5>
     </div>
     <div style="background-color: white;padding: 25px;height: 100%;border-left: 1px solid #dee5e7;border-right: 1px solid #dee5e7;border-bottom: 1px solid #dee5e7;">
         <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
-        <div id="main" style="width: 70%;height:70%;margin: 0 auto;"></div>
+        <div id="main" style="width: 100%;height:100%;margin: 0 auto;"></div>
     </div>
 </div>
 
@@ -52,7 +53,7 @@
 
     var data = [
         {name: '海门', value: 9},
-        {name: '鄂尔多斯', value: 12},
+        {name: '镇赉马力风电场', value: 49},
         {name: '招远', value: 12},
         {name: '舟山', value: 12},
         {name: '齐齐哈尔', value: 14},
@@ -244,7 +245,7 @@
     ];
     var geoCoordMap = {
         '海门':[121.15,31.89],
-        '鄂尔多斯':[109.781327,39.608266],
+        '镇赉马力风电场':[109.781327,39.608266],
         '招远':[120.38,37.35],
         '舟山':[122.207216,29.985295],
         '齐齐哈尔':[123.97,47.33],
@@ -450,124 +451,50 @@
     };
 
     option = {
+        backgroundColor: '#404a59',
         title: {
-            text: '全国主要城市空气质量 - 百度地图',
-            subtext: 'data from PM25.in',
-            sublink: 'http://www.pm25.in',
-            left: 'center'
+            text: '中国华能集团公司风电场分布图',
+            subtext: 'data from CHINA HUANENG',
+            left: 'center',
+            textStyle: {
+                color: '#fff'
+            }
         },
         tooltip : {
             trigger: 'item'
         },
-        bmap: {
-            center: [104.114129, 37.550339],
-            zoom: 5,
+        legend: {
+            orient: 'vertical',
+            y: 'bottom',
+            x:'right',
+            data:['华能集团'],
+            textStyle: {
+                color: '#fff'
+            }
+        },
+        geo: {
+            map: 'china',
+            label: {
+                emphasis: {
+                    show: false
+                }
+            },
             roam: true,
-            mapStyle: {
-                styleJson: [{
-                    'featureType': 'water',
-                    'elementType': 'all',
-                    'stylers': {
-                        'color': '#d1d1d1'
-                    }
-                }, {
-                    'featureType': 'land',
-                    'elementType': 'all',
-                    'stylers': {
-                        'color': '#f3f3f3'
-                    }
-                }, {
-                    'featureType': 'railway',
-                    'elementType': 'all',
-                    'stylers': {
-                        'visibility': 'off'
-                    }
-                }, {
-                    'featureType': 'highway',
-                    'elementType': 'all',
-                    'stylers': {
-                        'color': '#fdfdfd'
-                    }
-                }, {
-                    'featureType': 'highway',
-                    'elementType': 'labels',
-                    'stylers': {
-                        'visibility': 'off'
-                    }
-                }, {
-                    'featureType': 'arterial',
-                    'elementType': 'geometry',
-                    'stylers': {
-                        'color': '#fefefe'
-                    }
-                }, {
-                    'featureType': 'arterial',
-                    'elementType': 'geometry.fill',
-                    'stylers': {
-                        'color': '#fefefe'
-                    }
-                }, {
-                    'featureType': 'poi',
-                    'elementType': 'all',
-                    'stylers': {
-                        'visibility': 'off'
-                    }
-                }, {
-                    'featureType': 'green',
-                    'elementType': 'all',
-                    'stylers': {
-                        'visibility': 'off'
-                    }
-                }, {
-                    'featureType': 'subway',
-                    'elementType': 'all',
-                    'stylers': {
-                        'visibility': 'off'
-                    }
-                }, {
-                    'featureType': 'manmade',
-                    'elementType': 'all',
-                    'stylers': {
-                        'color': '#d1d1d1'
-                    }
-                }, {
-                    'featureType': 'local',
-                    'elementType': 'all',
-                    'stylers': {
-                        'color': '#d1d1d1'
-                    }
-                }, {
-                    'featureType': 'arterial',
-                    'elementType': 'labels',
-                    'stylers': {
-                        'visibility': 'off'
-                    }
-                }, {
-                    'featureType': 'boundary',
-                    'elementType': 'all',
-                    'stylers': {
-                        'color': '#fefefe'
-                    }
-                }, {
-                    'featureType': 'building',
-                    'elementType': 'all',
-                    'stylers': {
-                        'color': '#d1d1d1'
-                    }
-                }, {
-                    'featureType': 'label',
-                    'elementType': 'labels.text.fill',
-                    'stylers': {
-                        'color': '#999999'
-                    }
-                }]
+            itemStyle: {
+                normal: {
+                    areaColor: '#323c48',
+                    borderColor: '#111'
+                },
+                emphasis: {
+                    areaColor: '#2a333d'
+                }
             }
         },
         series : [
             {
-                name: 'pm2.5',
+                name: '华能集团',
                 type: 'scatter',
-                coordinateSystem: 'bmap',
+                coordinateSystem: 'geo',
                 data: convertData(data),
                 symbolSize: function (val) {
                     return val[2] / 10;
@@ -584,14 +511,14 @@
                 },
                 itemStyle: {
                     normal: {
-                        color: 'purple'
+                        color: '#ddb926'
                     }
                 }
             },
             {
                 name: 'Top 5',
                 type: 'effectScatter',
-                coordinateSystem: 'bmap',
+                coordinateSystem: 'geo',
                 data: convertData(data.sort(function (a, b) {
                     return b.value - a.value;
                 }).slice(0, 6)),
@@ -612,7 +539,7 @@
                 },
                 itemStyle: {
                     normal: {
-                        color: 'purple',
+                        color: '#f4e925',
                         shadowBlur: 10,
                         shadowColor: '#333'
                     }

@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -28,7 +29,9 @@ public class WeiboController {
 
     @Autowired
     private WeiboUserService weiboUserService;
+    @Autowired
     private WeiboService weiboService;
+    @Autowired
     private WeiboCommentService weiboCommentService;
 
     @RequestMapping("/weiboJson")
@@ -42,7 +45,7 @@ public class WeiboController {
     }
 
     @RequestMapping("/findAllWeiboUser")
-    public List<WeiboUser> findAllWeiboUser() throws Exception {
+    public @ResponseBody List<WeiboUser> findAllWeiboUser() throws Exception {
         return weiboUserService.findAllWeiboUser();
     }
 
@@ -105,17 +108,25 @@ public class WeiboController {
         String neuEmotion = "中立情绪";
         String posEmotion = "积极情绪";
 
-        //String negNum = weiboCommentList.get(0).get;
-        //String neuNum = weiboCommentList.get(1).get;
-        //String neuNum = weiboCommentList.get(2).get;
-
         //拼装数据
-        String makeString ="value:" + negEmotion + ",name:" + emotionNum[0] +
-                ";value" + neuEmotion + ",name:" + emotionNum[1] +
-                ";value" + posEmotion + ",name:" + emotionNum[2];
+        String makeString = "";
+        for(int i=0;i<weiboCommentList.size();i++){
+            Integer commentNum = weiboCommentList.get(i).getCountnum();
+            switch (i){
+                case 0:makeString+="value:" + commentNum+",name:" +negEmotion;break;
+                case 1:makeString+=";value:" + commentNum+",name:" +neuEmotion;break;
+                case 2:makeString+=";value:" + commentNum+",name:" +posEmotion;break;
+            }
+
+        }
+
         //通用方法
         map.addAttribute("commentEmotion", MakeEchartsJsonStringUtil.makeJsonArrayString(makeString));
         System.out.println("评论整体舆情倾向分析");
+
+        // 想看json结果你不会debug的话可以打印出来一行结果在控制台看
+        System.out.println("这就是那行结果："+MakeEchartsJsonStringUtil.makeJsonArrayString(makeString));
+
         return "echarts/useremotion";
     }
 

@@ -51,7 +51,7 @@ public class MakeEchartsJsonStringUtil {
             stringBuffer.append(",");
         }
         stringBuffer.append("]");
-        return stringBuffer.toString().replace(",},]", "}]");
+        return stringBuffer.toString().replace(",},]", "}]").replace(",}","}");
     }
 
     /**

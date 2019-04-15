@@ -19,6 +19,6 @@ public interface WeiboConmmentMapper {
     @Insert("INSERT INTO tbl_weibo_comment (wCid,commentNumber,commentUser,commentWeiBoNumber,commentContent,emotionTendency) VALUES (#{wCid},#{commentNumber},#{commentUser},#{commentWeiBoNumber},#{commentContent},#{emotionTendency})")
     void insertWeiboComment(WeiboComment weiboComment);
 
-    @Select("SELECT emotionTendency,COUNT(wCid) as countnum FROM tbl_weibo_comment GROUP BY emotionTendency")
+    @Select("SELECT emotionTendency,COUNT(wCid) as countnum FROM tbl_weibo_comment GROUP BY emotionTendency ORDER BY emotionTendency")
     List<WeiboComment> getemotionTendency();
 }
