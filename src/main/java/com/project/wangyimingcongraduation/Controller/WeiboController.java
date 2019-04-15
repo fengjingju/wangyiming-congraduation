@@ -91,8 +91,32 @@ public class WeiboController {
     }
 
     @RequestMapping("/getEmotionTendency")
-    public List<WeiboComment> getEmotionTendency() {
-        return weiboCommentService.getEmotionTendency();
+    public String getEmotionTendency(ModelMap map) {
+        List<WeiboComment> weiboCommentList = weiboCommentService.getEmotionTendency();
+
+        //获取每种情感的整体数量
+        String[] emotionNum = new String[3];
+        for(WeiboComment weiboComment : weiboCommentList){
+            int i = 0;
+            emotionNum[i++] = String.valueOf(weiboComment.getCountnum());
+        }
+
+        String negEmotion = "消极情绪";
+        String neuEmotion = "中立情绪";
+        String posEmotion = "积极情绪";
+
+        //String negNum = weiboCommentList.get(0).get;
+        //String neuNum = weiboCommentList.get(1).get;
+        //String neuNum = weiboCommentList.get(2).get;
+
+        //拼装数据
+        String makeString ="value:" + negEmotion + ",name:" + emotionNum[0] +
+                ";value" + neuEmotion + ",name:" + emotionNum[1] +
+                ";value" + posEmotion + ",name:" + emotionNum[2];
+        //通用方法
+        map.addAttribute("commentEmotion", MakeEchartsJsonStringUtil.makeJsonArrayString(makeString));
+        System.out.println("评论整体舆情倾向分析");
+        return "echarts/useremotion";
     }
 
     @RequestMapping("getUserSex")
