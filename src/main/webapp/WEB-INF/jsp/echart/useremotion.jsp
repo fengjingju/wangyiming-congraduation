@@ -26,14 +26,24 @@
     <%@ include file="/jsp/index.jsp" %>
 </div>
 
-<div style="margin:15px;float:left;width: 82%;height: 100%;">
+<div style="margin:15px;float:left;width: 80%;height: 100%;">
     <div style="background-color: #f6f8f8;height: 45px;border: 1px solid #dee5e7;padding: 12px;">
         <h5 style="font-family: 微软雅黑;color:#343434;font-size: 13px;">评论人群特征分析</h5>
     </div>
-    <div style="background-color: white;padding: 25px;height: 100%;border-left: 1px solid #dee5e7;border-right: 1px solid #dee5e7;border-bottom: 1px solid #dee5e7;">
+    <div style="background-color: white;padding: 25px;height: 100%;border-left: 1px solid #dee5e7;border-right: 1px solid #dee5e7;border-bottom: 1px solid #dee5e7;overflow: scroll;">
         <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
-        <div id="chartone" style="width: 20%;height:20%;margin: 0 auto;float: right"></div>
-        <div id="charttwo" style="width: 70%;height:70%;margin: 0 auto;float: left"></div>
+        <div id="chartone" style="width: 80%;height:70%;margin: 0 auto;"></div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div id="charttwo" style="width: 80%;height:70%;margin: 0 auto;"></div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
     </div>
 </div>
 <script type="text/javascript">
@@ -126,7 +136,7 @@
 
     myChart.setOption(option);
 
-    var optiontwo = {
+    var option2 = {
         tooltip : {
             trigger: 'axis',
             axisPointer : {            // 坐标轴指示器，坐标轴触发有效
@@ -212,7 +222,7 @@
             }
         ]
     };
-    myChart2.setOption(optiontwo);
+    myChart2.setOption(option2);
 </script>
 </body>
 </html>

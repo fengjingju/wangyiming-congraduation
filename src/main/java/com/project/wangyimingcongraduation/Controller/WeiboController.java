@@ -83,26 +83,100 @@ public class WeiboController {
         return "echart/user";
     }
 
-    @RequestMapping("getWeiboCount")
-    public List<Weibo> getWeiboCount() {
-        return weiboService.getWeiboCount();
+    @RequestMapping("/getWeiboCount")
+    public  String getWeiboCount(ModelMap map){
+        List<Weibo> weiboList = weiboService.getWeiboCount();
+
+        //获取每个sender名称以及发博数量
+        /*String[] weiboCount = new String[6];
+        for (Weibo weibo : weiboList){
+            int i = 0;
+            weiboCount[i++] = String.valueOf(weibo.getWeiboCount());
+        }*/
+
+        String allWeibo = "总微博数";
+        String grovernment0 = "中国警方在线";
+        String grovernment1 = "人民日报";
+        String grovernment2 = "平安北京";
+        String grovernment3 = "最高人民检察院";
+        String grovernment4 = "法制日报";
+        String grovernment5 = "首都网警";
+
+        //拼装数据
+        //echart1
+        String makeString = "";
+        //echart2
+        String makeString2 = "";//实际数量
+        String makeString_2 = "";//总量-实际数量
+        Integer allWeiboCount = 0;//总量
+        for (int i=0;i<weiboList.size();i++) {
+            Integer weiboCount = weiboList.get(i).getWeiboCount();
+            allWeiboCount = allWeiboCount + weiboCount;
+        }
+        for (int i=0;i<weiboList.size();i++){
+            Integer weiboCount = weiboList.get(i).getWeiboCount();
+            switch (i){
+                case 0:{
+                    makeString+="value:" + weiboCount + ",name:" + grovernment0;
+                    makeString2 = allWeiboCount +",";
+                    makeString_2 = String.valueOf(allWeiboCount - allWeiboCount)+",";
+                }break;
+                case 1:{
+                    makeString+=";value:" + weiboCount + ",name:" + grovernment1;
+                    makeString2 = makeString2 + weiboCount +",";
+                    makeString_2 = makeString2 + String.valueOf(allWeiboCount - weiboCount) +",";
+                }break;
+                case 2:{
+                    makeString+=";value:" + weiboCount + ",name:" + grovernment2;
+                    makeString2 = makeString2 + weiboCount +",";
+                    makeString_2 = makeString2 + String.valueOf(allWeiboCount - weiboCount) +",";
+                }break;
+                case 3:{
+                    makeString+=";value:" + weiboCount + ",name:" + grovernment3;
+                    makeString2 = makeString2 + weiboCount +",";
+                    makeString_2 = makeString2 + String.valueOf(allWeiboCount - weiboCount) +",";
+                }break;
+                case 4:{
+                    makeString+=";value:" + weiboCount + ",name:" + grovernment4;
+                    makeString2 = makeString2 + weiboCount +",";
+                    makeString_2 = makeString2 + String.valueOf(allWeiboCount - weiboCount) +",";
+                }break;
+                case 5:{
+                    makeString+=";value:" + weiboCount + ",name:" + grovernment5;
+                    makeString2 = makeString2 + weiboCount +",";
+                    makeString_2 = makeString2 + String.valueOf(allWeiboCount - weiboCount) +",";
+                }break;
+            }
+        }
+
+        //通用方法
+        map.addAttribute("weiboCount", MakeEchartsJsonStringUtil.makeJsonArrayString(makeString));
+        System.out.println("政府微博活跃度展示");
+
+        //拼装坐标
+        String title = grovernment0 +","+ grovernment1 +","+ grovernment2 +","+ grovernment3 +","+ grovernment4 +","+ grovernment5;
+
+        // 想看json结果你不会debug的话可以打印出来一行结果在控制台看
+        System.out.println("政府微博活跃度展示结果："+MakeEchartsJsonStringUtil.makeJsonArrayString(makeString));
+        map.addAttribute("weiboCountTitle", MakeEchartsJsonStringUtil.makeEchartTitle(title));
+        return "echarts/weiboSum";
     }
+
 
     @RequestMapping("getCommentCount")
     public List<Weibo> getCommentCount() {
         return weiboService.getCommentCount();
     }
-
     @RequestMapping("/getEmotionTendency")
     public String getEmotionTendency(ModelMap map) {
         List<WeiboComment> weiboCommentList = weiboCommentService.getEmotionTendency();
 
         //获取每种情感的整体数量
-        String[] emotionNum = new String[3];
+        /*String[] emotionNum = new String[3];
         for(WeiboComment weiboComment : weiboCommentList){
             int i = 0;
             emotionNum[i++] = String.valueOf(weiboComment.getCountnum());
-        }
+        }*/
 
         String negEmotion = "消极情绪";
         String neuEmotion = "中立情绪";
@@ -117,7 +191,6 @@ public class WeiboController {
                 case 1:makeString+=";value:" + commentNum+",name:" +neuEmotion;break;
                 case 2:makeString+=";value:" + commentNum+",name:" +posEmotion;break;
             }
-
         }
 
         //通用方法

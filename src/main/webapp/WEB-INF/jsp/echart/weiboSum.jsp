@@ -31,165 +31,171 @@
 <div style="float: left;height: 100%;background-color: #1c2b36;">
     <%@ include file="/jsp/index.jsp" %>
 </div>
-
-<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
-<div class="col-sm-12">
-    <div class="ibox float-e-margins">
-        <div class="ibox-title">
-            <h5>基本表单</h5>
-        </div>
-        <div class="ibox-content">
-            <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
-            <div id="main" style="width: 400px;height:300px;"></div>
-        </div>
+<div style="margin:15px;float:left;width: 80%;height: 100%;">
+    <div style="background-color: #f6f8f8;height: 45px;border: 1px solid #dee5e7;padding: 12px;">
+        <h5 style="font-family: 微软雅黑;color:#343434;font-size: 13px;">政府微博活跃度展示</h5>
+    </div>
+    <div style="background-color: white;padding: 25px;height: 100%;border-left: 1px solid #dee5e7;border-right: 1px solid #dee5e7;border-bottom: 1px solid #dee5e7;overflow: scroll;">
+        <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+        <div id="chartone" style="width: 80%;height:70%;margin: 0 auto;"></div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div id="charttwo" style="width: 80%;height:70%;margin: 0 auto;"></div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
     </div>
 </div>
 
 <script type="text/javascript">
     // 基于准备好的dom，初始化echarts实例
-    var myChart = echarts.init(document.getElementById('main'));
-
+    var myChart = echarts.init(document.getElementById('chartone'));
+    var myChart2 = echarts.init(document.getElementById('charttwo'));
     // 指定图表的配置项和数据
-    var builderJson = {
-        "all": 10887,
-        "charts": {
-            "map": 3237,
-            "lines": 2164,
-            "bar": 7561,
-            "line": 7778,
-            "pie": 7355,
-            "scatter": 2405,
-            "candlestick": 1842,
-            "radar": 2090,
-            "heatmap": 1762,
-            "treemap": 1593,
-            "graph": 2060,
-            "boxplot": 1537,
-            "parallel": 1908,
-            "gauge": 2107,
-            "funnel": 1692,
-            "sankey": 1568
-        },
-        "ie": 9743
-    };
+    var option = {
+        backgroundColor: '#ffffff',
 
-    var downloadJson = {
-        "echarts.min.js": 17365,
-        "echarts.simple.min.js": 4079,
-        "echarts.common.min.js": 6929,
-        "echarts.js": 14890
-    };
-
-    var themeJson = {
-        "dark.js": 1594,
-        "infographic.js": 925,
-        "shine.js": 1608,
-        "roma.js": 721,
-        "macarons.js": 2179,
-        "vintage.js": 1982
-    };
-
-    var waterMarkText = 'ECHARTS';
-
-    var canvas = document.createElement('canvas');
-    var ctx = canvas.getContext('2d');
-    canvas.width = canvas.height = 100;
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    ctx.globalAlpha = 0.08;
-    ctx.font = '20px Microsoft Yahei';
-    ctx.translate(50, 50);
-    ctx.rotate(-Math.PI / 4);
-    ctx.fillText(waterMarkText, 0, 0);
-    var option =option = {
-        backgroundColor: {
-            type: 'pattern',
-            image: canvas,
-            repeat: 'repeat'
-        },
-        tooltip: {},
-        title: [{
-            text: '在线构建',
-            subtext: '总计 ' + builderJson.all,
-            x: '25%',
-            textAlign: 'center'
-        }, {
-            text: '各版本下载',
-            subtext: '总计 ' + Object.keys(downloadJson).reduce(function (all, key) {
-                return all + downloadJson[key];
-            }, 0),
-            x: '75%',
-            textAlign: 'center'
-        }],
-        grid: [{
-            top: 50,
-            width: '50%',
-            bottom: '45%',
-            left: 10,
-            containLabel: true
-        }, {
-            top: '55%',
-            width: '50%',
-            bottom: 0,
-            left: 10,
-            containLabel: true
-        }],
-        xAxis: [{
-            type: 'value',
-            max: builderJson.all,
-            splitLine: {
-                show: false
+        title: {
+            text: 'Customized Pie',
+            left: 'center',
+            top: 20,
+            textStyle: {
+                color: '#262626'
             }
-        }],
-        yAxis: [{
-            type: 'category',
-            data: Object.keys(builderJson.charts),
-            axisLabel: {
-                interval: 0,
-                rotate: 30
-            },
-            splitLine: {
-                show: false
+        },
+
+        tooltip : {
+            trigger: 'item',
+            formatter: "{a} <br/>{b} : {c} ({d}%)"
+        },
+
+        visualMap: {
+            show: false,
+            min: 80,
+            max: 600,
+            inRange: {
+                colorLightness: [0, 1]
             }
-        }],
-        series: [{
-            type: 'bar',
-            stack: 'chart',
-            z: 3,
-            label: {
-                normal: {
-                    position: 'right',
-                    show: true
+        },
+        series : [
+            {
+                name:'访问来源',
+                type:'pie',
+                radius : '55%',
+                center: ['50%', '50%'],
+                /*data:[
+                    {value:335, name:'直接访问'},
+                    {value:310, name:'邮件营销'},
+                    {value:274, name:'联盟广告'},
+                    {value:235, name:'视频广告'},
+                    {value:400, name:'搜索引擎'}
+                ].sort(function (a, b) { return a.value - b.value; }),*/
+                data:${weiboCount}.sort(function (a, b) { return a.value - b.value; }),
+                roseType: 'radius',
+                label: {
+                    normal: {
+                        textStyle: {
+                            color: '#262626'
+                        }
+                    }
+                },
+                labelLine: {
+                    normal: {
+                        lineStyle: {
+                            color: '#262626'
+                        },
+                        smooth: 0.2,
+                        length: 10,
+                        length2: 20
+                    }
+                },
+                itemStyle: {
+                    normal: {
+                        color: '#c23531',
+                        shadowBlur: 200,
+                        shadowColor: '#ffffff'
+                    }
+                },
+
+                animationType: 'scale',
+                animationEasing: 'elasticOut',
+                animationDelay: function (idx) {
+                    return Math.random() * 200;
                 }
-            },
-            data: Object.keys(builderJson.charts).map(function (key) {
-                return builderJson.charts[key];
-            })
-        }, {
-            type: 'bar',
-            stack: 'chart',
-            silent: true,
-            itemStyle: {
-                normal: {
-                    color: '#eee'
-                }
-            },
-            data: Object.keys(builderJson.charts).map(function (key) {
-                return builderJson.all - builderJson.charts[key];
-            })
-        }, {
-            type: 'pie',
-            radius: [0, '30%'],
-            center: ['75%', '25%'],
-            data: Object.keys(downloadJson).map(function (key) {
-                return {
-                    name: key.replace('.js', ''),
-                    value: downloadJson[key]
-                }
-            })
-        }]
+            }
+        ]
     };
+
     myChart.setOption(option);
+
+    var option2 =option = {
+        title: {
+            text: '政府新媒体微博数量组成（单位:条）',
+            subtext: 'From ExcelHome',
+            sublink: 'http://e.weibo.com/1341556070/AjQH99che'
+        },
+        tooltip : {
+            trigger: 'axis',
+            axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+            },
+            formatter: function (params) {
+                var tar = params[1];
+                return tar.name + '<br/>' + tar.seriesName + ' : ' + tar.value;
+            }
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+        },
+        xAxis: {
+            type : 'category',
+            splitLine: {show:false},
+            data : ['总费用','房租','水电费','交通费','伙食费','日用品数']
+        },
+        yAxis: {
+            type : 'value'
+        },
+        series: [
+            {
+                name: '辅助',
+                type: 'bar',
+                stack:  '总量',
+                itemStyle: {
+                    normal: {
+                        barBorderColor: 'rgba(0,0,0,0)',
+                        color: 'rgba(0,0,0,0)'
+                    },
+                    emphasis: {
+                        barBorderColor: 'rgba(0,0,0,0)',
+                        color: 'rgba(0,0,0,0)'
+                    }
+                },
+                data: [0, 1700, 1400, 1200, 300, 0]
+            },
+            {
+                name: '生活费',
+                type: 'bar',
+                stack: '总量',
+                label: {
+                    normal: {
+                        show: true,
+                        position: 'inside'
+                    }
+                },
+                data:[2900, 1200, 300, 200, 900, 300]
+            }
+        ]
+    };
+
+    myChart2.setOption(option2);
 </script>
 </body>
 </html>

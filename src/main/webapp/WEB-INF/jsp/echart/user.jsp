@@ -26,20 +26,31 @@
     <%@ include file="/jsp/index.jsp" %>
 </div>
 
-<div style="margin:15px;float:left;width: 82%;height: 100%;">
+<div style="margin:15px;float:left;width: 80%;height: 100%;">
     <div style="background-color: #f6f8f8;height: 45px;border: 1px solid #dee5e7;padding: 12px;">
         <h5 style="font-family: 微软雅黑;color:#343434;font-size: 13px;">评论人群特征分析</h5>
     </div>
-    <div style="background-color: white;padding: 25px;height: 100%;border-left: 1px solid #dee5e7;border-right: 1px solid #dee5e7;border-bottom: 1px solid #dee5e7;">
+    <div style="background-color: white;padding: 25px;height: 100%;border-left: 1px solid #dee5e7;border-right: 1px solid #dee5e7;border-bottom: 1px solid #dee5e7;overflow: scroll;">
         <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
-        <div id="main" style="width: 70%;height:70%;margin: 0 auto;"></div>
+        <div id="chartone" style="width: 80%;height:70%;margin: 0 auto;"></div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div id="charttwo" style="width: 80%;height:70%;margin: 0 auto;"></div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
     </div>
 </div>
 
 <script type="text/javascript">
     // 基于准备好的dom，初始化echarts实例
-    var myChart = echarts.init(document.getElementById('main'));
-
+    var myChart = echarts.init(document.getElementById('chartone'));
+    var myChart2 = echarts.init(document.getElementById('charttwo'));
     // 指定图表的配置项和数据
     var option = {
         title: {
@@ -124,6 +135,52 @@
         ]
     };
     myChart.setOption(option);
+
+    option2 = {
+        tooltip: {
+            trigger: 'item',
+            formatter: "{a} <br/>{b}: {c} ({d}%)"
+        },
+        legend: {
+            orient: 'vertical',
+            x: 'left',
+            data:['直接访问','邮件营销','联盟广告','视频广告','搜索引擎']
+        },
+        series: [
+            {
+                name:'访问来源',
+                type:'pie',
+                radius: ['50%', '70%'],
+                avoidLabelOverlap: false,
+                label: {
+                    normal: {
+                        show: false,
+                        position: 'center'
+                    },
+                    emphasis: {
+                        show: true,
+                        textStyle: {
+                            fontSize: '30',
+                            fontWeight: 'bold'
+                        }
+                    }
+                },
+                labelLine: {
+                    normal: {
+                        show: false
+                    }
+                },
+                data:[
+                    {value:335, name:'直接访问'},
+                    {value:310, name:'邮件营销'},
+                    {value:234, name:'联盟广告'},
+                    {value:135, name:'视频广告'},
+                    {value:1548, name:'搜索引擎'}
+                ]
+            }
+        ]
+    };
+    myChart2.setOption(option2);
 </script>
 </body>
 </html>

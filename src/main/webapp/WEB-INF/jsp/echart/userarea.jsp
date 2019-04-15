@@ -9,7 +9,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
-    <title>评论人群特征分析</title>
+    <title>评论人群分布分析</title>
 
     <!--bootstrap-->
     <link href="/bootstrap-3.3.7-dist/css/bootstrap.css" rel="stylesheet">
