@@ -16,6 +16,13 @@ public class WeiboCommentServiceImpl implements WeiboCommentService {
 
     @Override
     public List<WeiboComment> getEmotionTendency(){
+
         return weiboConmmentMapper.getemotionTendency();
+    }
+
+    @Override
+    public List<WeiboComment> getclassifyEmotion(){
+
+        return weiboConmmentMapper.getclassifyEmotion();
     }
 }

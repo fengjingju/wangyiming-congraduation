@@ -21,4 +21,7 @@ public interface WeiboConmmentMapper {
 
     @Select("SELECT emotionTendency,COUNT(wCid) as countnum FROM tbl_weibo_comment GROUP BY emotionTendency ORDER BY emotionTendency")
     List<WeiboComment> getemotionTendency();
+
+    @Select("SELECT temp.sender,count(*) as emotionnum,temp.emotionTendency from(SELECT tbl_weibo.sender,tbl_weibo_comment.emotionTendency FROM tbl_weibo,tbl_weibo_comment WHERE tbl_weibo.weiboNumber = tbl_weibo_comment.commentWeiBoNumber ORDER BY sender)AS temp GROUP BY temp.sender,temp.emotionTendency ORDER BY temp.sender")
+    List<WeiboComment> getclassifyEmotion();
 }

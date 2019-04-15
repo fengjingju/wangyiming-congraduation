@@ -20,4 +20,5 @@ public class WeiboComment {
 
     // sql语句得到字段
     private Integer countnum;
+    private Integer emotionnum;//经过sender分类统计的
 }

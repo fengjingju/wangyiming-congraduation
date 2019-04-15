@@ -208,4 +208,9 @@ public class WeiboController {
         return weiboUserService.getUserSex();
     }
 
+    @RequestMapping("/getclassifyEmotion")
+    List<WeiboComment> getclassifyEmption(){
+        return weiboCommentService.getclssifyEmotion();
+    }
+
 }
