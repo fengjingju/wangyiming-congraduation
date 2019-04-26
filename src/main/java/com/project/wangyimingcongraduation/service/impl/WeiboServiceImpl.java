@@ -41,4 +41,9 @@ public class WeiboServiceImpl implements WeiboService {
         }
         return weiboList;
     }
+
+    @Override
+    public List<Weibo> getAllWeibo() {
+        return weiboMapper.getAllWeibo();
+    }
 }

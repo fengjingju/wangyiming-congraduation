@@ -17,11 +17,7 @@ public class Test {
         return "echart/pieChart";
     }
 
-    @RequestMapping("/weibo")
-    public String outWeibo(){
-        System.out.println("微博原文展示");
-        return "echart/weibo";
-    }
+
 
     @RequestMapping("/weibosum")
     public String outWeiboSum(){

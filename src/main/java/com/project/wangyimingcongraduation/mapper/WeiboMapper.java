@@ -30,4 +30,7 @@ public interface WeiboMapper {
 
     //@Select("select sender ,ROUND(avg(commentNum)) AS avgcomment from tbl_weibo GROUP BY sender")
 
+    @Select("SELECT * FROM tbl_weibo")
+    List<Weibo> getAllWeibo();
+
 }

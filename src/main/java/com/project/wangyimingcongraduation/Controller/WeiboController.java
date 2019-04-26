@@ -29,8 +29,10 @@ public class WeiboController {
 
     @Autowired
     private WeiboUserService weiboUserService;
+
     @Autowired
     private WeiboService weiboService;
+
     @Autowired
     private WeiboCommentService weiboCommentService;
 
@@ -217,6 +219,13 @@ public class WeiboController {
     @RequestMapping("/getclassifyEmotion")
     List<WeiboComment> getclassifyEmption(){
         return weiboCommentService.getclassifyEmotion();
+    }
+
+    @RequestMapping("/weibo")
+    public String getAllWeibo(ModelMap map){
+        List<Weibo> weiboList = weiboService.getAllWeibo();
+        map.addAttribute("weiboList", weiboList);
+        return "templet/table_data_tables";
     }
 
 }

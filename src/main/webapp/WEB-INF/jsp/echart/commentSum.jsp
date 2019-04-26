@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>微博评论聚集度展示</title>
@@ -18,32 +18,51 @@
 
     <!--echart-->
     <script src="/incubator-echarts-4.2.1/dist/echarts.js"></script>
+
+    <style>
+        html, body {
+            height: 100%;
+            width: 100%;
+            padding: 0;
+            margin: 0
+        }
+    </style>
 </head>
 
-<body class="gray-bg">
+<body>
 
-<div style="float: left;height: 100%;background-color: #1c2b36;">
+<div style="float: left;height: 100%;background-color: #1c2b36;width: 15%">
     <%@ include file="/jsp/index.jsp" %>
 </div>
 
-<div style="margin:15px;float:left;width: 80%;height: 100%;">
-    <div style="background-color: #f6f8f8;height: 45px;border: 1px solid #dee5e7;padding: 12px;">
-        <h5 style="font-family: 微软雅黑;color:#343434;font-size: 13px;">微博评论聚集度展示</h5>
-    </div>
-    <div style="background-color: white;padding: 25px;height: 100%;border-left: 1px solid #dee5e7;border-right: 1px solid #dee5e7;border-bottom: 1px solid #dee5e7;overflow: scroll;">
-        <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
-        <div id="chartone" style="width: 80%;height:70%;margin: 0 auto;"></div>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <div id="charttwo" style="width: 80%;height:70%;margin: 0 auto;"></div>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
+<div class="wrapper wrapper-content animated fadeInRight" style="float:left;width: 85%">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>基本表单
+                        <small>简单登录表单示例</small>
+                    </h5>
+                </div>
+                <div class="ibox-content">
+                    <div class="row">
+                        <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+                        <div id="chartone" style="width: 80%;height:70%;margin: 0 auto;"></div>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <div id="charttwo" style="width: 80%;height:70%;margin: 0 auto;"></div>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -86,26 +105,26 @@
                 }
             },
             indicator: [
-                { name: '销售（sales）', max: 6500},
-                { name: '管理（Administration）', max: 16000},
-                { name: '信息技术（Information Techology）', max: 30000},
-                { name: '客服（Customer Support）', max: 38000},
-                { name: '研发（Development）', max: 52000},
-                { name: '市场（Marketing）', max: 25000}
+                {name: '销售（sales）', max: 6500},
+                {name: '管理（Administration）', max: 16000},
+                {name: '信息技术（Information Techology）', max: 30000},
+                {name: '客服（Customer Support）', max: 38000},
+                {name: '研发（Development）', max: 52000},
+                {name: '市场（Marketing）', max: 25000}
             ]
         },
         series: [{
             name: '预算 vs 开销（Budget vs spending）',
             type: 'radar',
             // areaStyle: {normal: {}},
-            data : [
+            data: [
                 {
-                    value : [4300, 10000, 28000, 35000, 50000, 19000],
-                    name : '预算分配（Allocated Budget）'
+                    value: [4300, 10000, 28000, 35000, 50000, 19000],
+                    name: '预算分配（Allocated Budget）'
                 },
                 {
-                    value : [5000, 14000, 28000, 31000, 42000, 21000],
-                    name : '实际开销（Actual Spending）'
+                    value: [5000, 14000, 28000, 31000, 42000, 21000],
+                    name: '实际开销（Actual Spending）'
                 }
             ]
         }]

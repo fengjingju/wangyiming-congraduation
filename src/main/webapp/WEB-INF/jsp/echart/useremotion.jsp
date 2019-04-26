@@ -22,28 +22,37 @@
 </head>
 <body class="gray-bg">
 
-<div style="float: left;height: 100%;background-color: #1c2b36;">
+<div style="float: left;height: 100%;background-color: #1c2b36;width: 15%">
     <%@ include file="/jsp/index.jsp" %>
 </div>
-
-<div style="margin:15px;float:left;width: 80%;height: 100%;">
-    <div style="background-color: #f6f8f8;height: 45px;border: 1px solid #dee5e7;padding: 12px;">
-        <h5 style="font-family: 微软雅黑;color:#343434;font-size: 13px;">评论人群特征分析</h5>
-    </div>
-    <div style="background-color: white;padding: 25px;height: 100%;border-left: 1px solid #dee5e7;border-right: 1px solid #dee5e7;border-bottom: 1px solid #dee5e7;overflow: scroll;">
-        <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
-        <div id="chartone" style="width: 80%;height:70%;margin: 0 auto;"></div>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <div id="charttwo" style="width: 80%;height:70%;margin: 0 auto;"></div>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
+<div class="wrapper wrapper-content animated fadeInRight" style="float:left;width: 85%">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>基本表单
+                        <small>简单登录表单示例</small>
+                    </h5>
+                </div>
+                <div class="ibox-content">
+                    <div class="row">
+                        <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+                        <div id="chartone" style="width: 80%;height:70%;margin: 0 auto;"></div>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <div id="charttwo" style="width: 80%;height:70%;margin: 0 auto;"></div>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <script type="text/javascript">

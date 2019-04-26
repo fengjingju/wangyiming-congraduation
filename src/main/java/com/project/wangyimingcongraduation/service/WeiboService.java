@@ -14,4 +14,7 @@ public interface WeiboService {
 
     /**平均各个政府部门一共收到的微博评论数量*/
     List<Weibo> getAvgComment();
+
+    /** 获取微博所有内容 */
+    List<Weibo> getAllWeibo();
 }

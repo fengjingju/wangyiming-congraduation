@@ -32,11 +32,11 @@
 </head>
 <body class="gray-bg">
 
-<div style="float: left;height: 100%;background-color: #1c2b36;">
+<div style="float: left;height: 100%;background-color: #1c2b36;width: 15%">
     <%@ include file="/jsp/index.jsp" %>
 </div>
 
-<div style="margin:15px;float:left;border-color:red;width: 82%;height: 100%;">
+<div style="margin:15px;float:left;border-color:red;width: 85%;height: 100%;">
     <div style="background-color: #f6f8f8;height: 45px;border: 1px solid #dee5e7;padding: 12px;">
         <h5 style="font-family: 微软雅黑;color:#343434;font-size: 13px;">评论人群特征分析</h5>
     </div>

@@ -22,12 +22,28 @@
 </head>
 <body class="gray-bg">
 
-<div style="float: left;height: 100%;background-color: #1c2b36;">
+<div style="float: left;height: 100%;background-color: #1c2b36;width: 15%">
     <%@ include file="/jsp/index.jsp" %>
 </div>
-
-<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
-<div id="main" style="width: 500px;height:400px;float: left;margin-left: 300px;"></div>
+<div class="wrapper wrapper-content animated fadeInRight" style="float:left;width: 85%">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>基本表单
+                        <small>简单登录表单示例</small>
+                    </h5>
+                </div>
+                <div class="ibox-content">
+                    <div class="row">
+                        <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+                        <div id="main" style="width: 500px;height:400px;float: left;margin-left: 300px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <script type="text/javascript">
     // 基于准备好的dom，初始化echarts实例
     var myChart = echarts.init(document.getElementById('main'));
