@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-    <title> - 数据表格</title>
+    <title> 微博原文展示 </title>
     <meta name="keywords" content="">
     <meta name="description" content="">
 
@@ -27,17 +27,16 @@
 </head>
 
 <body>
-<div style="float: left;height: 100%;background-color: #1c2b36;width: 15%">
+<div style="float: left;height: 100%;background-color: #1c2b36;width: 18%">
     <%@ include file="/jsp/index.jsp" %>
 </div>
 
-<div class="wrapper wrapper-content animated fadeInRight" style="float: left;width: 85%">
+<div class="wrapper wrapper-content animated fadeInRight" style="float: left;width: 82%">
     <div class="row">
         <div class="col-sm-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
                     <h5>微博原文展示
-                        <small>支持分页查找排序</small>
                     </h5>
                 </div>
                 <div class="ibox-content">

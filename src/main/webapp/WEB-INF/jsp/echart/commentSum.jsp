@@ -31,11 +31,11 @@
 
 <body>
 
-<div style="float: left;height: 100%;background-color: #1c2b36;width: 15%">
+<div style="float: left;height: 100%;background-color: #1c2b36;width: 18%">
     <%@ include file="/jsp/index.jsp" %>
 </div>
 
-<div class="wrapper wrapper-content animated fadeInRight" style="float:left;width: 85%">
+<div class="wrapper wrapper-content animated fadeInRight" style="float:left;width: 82%">
     <div class="row">
         <div class="col-sm-12">
             <div class="ibox float-e-margins">

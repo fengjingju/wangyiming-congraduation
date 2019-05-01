@@ -159,10 +159,11 @@ public class WeiboController {
 
         //通用方法
         map.addAttribute("weiboCount", MakeEchartsJsonStringUtil.makeJsonArrayString(makeString));
-        System.out.println("政府微博活跃度展示");
+
 
         //拼装坐标
         String title = grovernment0 +","+ grovernment1 +","+ grovernment2 +","+ grovernment3 +","+ grovernment4 +","+ grovernment5;
+        map.addAttribute("weiboCountTitle", MakeEchartsJsonStringUtil.makeEchartTitle(title));
 
         // 想看json结果你不会debug的话可以打印出来一行结果在控制台看
         System.out.println("政府微博活跃度展示结果："+MakeEchartsJsonStringUtil.makeJsonArrayString(makeString));

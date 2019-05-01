@@ -21,11 +21,11 @@
 </head>
 
 <body class="gray-bg">
-<div style="float: left;height: 100%;background-color: #1c2b36;width: 15%">
+<div style="float: left;height: 100%;background-color: #1c2b36;width: 18%">
     <%@ include file="/jsp/index.jsp" %>
 </div>
 
-    <div class="wrapper wrapper-content" style="float: left;width: 85%">
+    <div class="wrapper wrapper-content" style="float: left;width: 82%">
         <div class="row">
             <div class="col-sm-12">
                 <div class="row">
