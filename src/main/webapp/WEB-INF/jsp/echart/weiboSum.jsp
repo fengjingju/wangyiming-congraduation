@@ -98,14 +98,14 @@
                 type:'pie',
                 radius : '55%',
                 center: ['50%', '50%'],
-                /*data:[
-                    {value:335, name:'直接访问'},
-                    {value:310, name:'邮件营销'},
-                    {value:274, name:'联盟广告'},
-                    {value:235, name:'视频广告'},
-                    {value:400, name:'搜索引擎'}
-                ].sort(function (a, b) { return a.value - b.value; }),*/
-                data:${weiboCount}.sort(function (a, b) { return a.value - b.value; }),
+                data:[
+                    {value:57, name:'直接访问'},
+                    {value:5, name:'邮件营销'},
+                    {value:64, name:'联盟广告'},
+                    {value:212, name:'视频广告'},
+                    {value:781, name:'搜索引擎'}
+                ].sort(function (a, b) { return a.value - b.value; }),
+                <%--data:${weiboCount}.sort(function (a, b) { return a.value - b.value; }),--%>
                 roseType: 'radius',
                 label: {
                     normal: {

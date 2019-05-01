@@ -167,7 +167,7 @@ public class WeiboController {
         // 想看json结果你不会debug的话可以打印出来一行结果在控制台看
         System.out.println("政府微博活跃度展示结果："+MakeEchartsJsonStringUtil.makeJsonArrayString(makeString));
         map.addAttribute("weiboCountTitle", MakeEchartsJsonStringUtil.makeEchartTitle(title));
-        return "echarts/weiboSum";
+        return "echart/weiboSum";
     }
 
 

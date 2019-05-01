@@ -61,7 +61,7 @@
                     <!--新媒体政务数据展示-->
                     <li>
                         <a href="/weibo"><i class="fa fa-table"></i> <span class="nav-label">微博原文展示</span></a>
-                        <a href="/weibosum"><i class="fa fa-edit"></i> <span class="nav-label">政府微博活跃度展示</span></a>
+                        <a href="/getWeiboCount"><i class="fa fa-edit"></i> <span class="nav-label">政府微博活跃度展示</span></a>
                         <a href="/weibocommentsum"><i class="fa fa-desktop"></i> <span class="nav-label">微博评论聚集度展示</span></a>
                     </li>
                     <li class="line dk"></li>
