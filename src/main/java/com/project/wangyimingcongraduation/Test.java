@@ -37,12 +37,6 @@ public class Test {
         return "echart/user";
     }
 
-    @RequestMapping("/userarea")
-    public String outUserarea(){
-        System.out.println("评论人群地域分布");
-        return "echart/userarea";
-    }
-
     @RequestMapping("/useremotion")
     public String outUseremotion(){
         System.out.println("评论情感分布");

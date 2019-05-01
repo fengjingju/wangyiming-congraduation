@@ -4,6 +4,7 @@ import com.project.wangyimingcongraduation.domain.WeiboUser;
 
 import java.text.ParseException;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author create by FENGJINGJU
@@ -16,6 +17,9 @@ public interface WeiboUserService {
 
     /** 获取不同年龄阶段的人评论人数 */
     List<Double> peopleAgeFeature() throws ParseException;
+
+    /** 获取不同地域的人评论人数 */
+    Map<String,Integer> getZeroAndPeopleNum();
 
     /**评论人群的性别比例*/
     List<WeiboUser> getUserSex();

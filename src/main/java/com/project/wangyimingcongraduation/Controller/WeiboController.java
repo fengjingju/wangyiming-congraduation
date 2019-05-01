@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Author: Create by FENGJINGJU
@@ -227,6 +228,27 @@ public class WeiboController {
         List<Weibo> weiboList = weiboService.getAllWeibo();
         map.addAttribute("weiboList", weiboList);
         return "templet/table_data_tables";
+    }
+
+    @RequestMapping("/userarea")
+    public String outUserarea(ModelMap map){
+        Map<String,Integer> zeroAndPeopleNumMap =  weiboUserService.getZeroAndPeopleNum();
+        StringBuffer stringBuffer = new StringBuffer();
+        for(Map.Entry entry:zeroAndPeopleNumMap.entrySet()){
+            stringBuffer.append(";name:");
+            stringBuffer.append(entry.getKey());
+            stringBuffer.append(",value:");
+            if("北京".equals(entry.getKey())) {
+                stringBuffer.append((int) entry.getValue() / 5);
+            }else {
+                stringBuffer.append((int) entry.getValue() / 2.5);
+            }
+        }
+        //通用方法
+        map.addAttribute("zeroAndPeopleNum", MakeEchartsJsonStringUtil.makeJsonArrayString(
+                stringBuffer.toString().substring(1,stringBuffer.toString().length())));
+
+        return "echart/userarea";
     }
 
 }

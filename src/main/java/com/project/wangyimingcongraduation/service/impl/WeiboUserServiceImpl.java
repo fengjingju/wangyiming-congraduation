@@ -5,6 +5,7 @@ import com.project.wangyimingcongraduation.mapper.WeiboUserMapper;
 import com.project.wangyimingcongraduation.service.WeiboUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
@@ -161,6 +162,60 @@ public class WeiboUserServiceImpl implements WeiboUserService {
         resultList.add(fortyFiveAndMoreThanFortyFivePersent);
 
         return resultList;
+    }
+
+    @Override
+    public Map<String, Integer> getZeroAndPeopleNum() {
+        List<WeiboUser> weiboUserList = weiboUserMapper.findAllWeiboUser();
+
+        String chinaZhiXiaShi = "北京,上海,重庆,天津,海外";
+        String chinaSheng = "河北:石家庄,山西:太原,辽宁:沈阳,吉林:长春,黑龙江:哈尔滨,江苏:南京,浙江:杭州,安徽:合肥,福建:福州,台湾:台北,江西:南昌,山东:济南,河南:郑州,湖北:武汉,湖南:长沙,广东:广州,海南:海口,四川:成都,贵州:贵阳,云南:昆明,陕西:西安,甘肃:兰州,青海:西宁";
+
+        String[] shengAndShenghui = chinaSheng.split(",");
+        // map<省，省会>
+        Map<String, String> shengAndShenghuiMap = new HashMap<>(shengAndShenghui.length);
+        for (String sas : shengAndShenghui) {
+            String[] temp = sas.split(":");
+            shengAndShenghuiMap.put(temp[0], temp[1]);
+        }
+
+        Map<String,Integer> zeroAndPeopleNumMap = new HashMap<>();
+        for (WeiboUser weiboUser : weiboUserList) {
+            /** 分割地域信息 */
+            String zone = weiboUser.getZone();
+            String[] zoneArray = zone.split(" ");
+            if (zoneArray.length == 1) {
+                if (!shengAndShenghuiMap.keySet().contains(zone)) {
+                    weiboUser.setShi(zone);
+                } else {
+                    String shiTemp = shengAndShenghuiMap.get(zone);
+                    if (shiTemp != null) {
+                        weiboUser.setShi(shiTemp);
+                    } else {
+                        System.out.println("超出范围的：" + zone);
+                    }
+                }
+            } else if (zoneArray.length == 2) {
+                if (chinaZhiXiaShi.contains(zoneArray[0])) {
+                    weiboUser.setShi(zoneArray[0]);
+                } else {
+                    weiboUser.setShi(zoneArray[1]);
+                }
+            } else {
+                System.out.println("长度超过了2的：" + zone);
+            }
+
+            String shi = weiboUser.getShi();
+            if(!StringUtils.isEmpty(shi)){
+                Integer peopleNum = zeroAndPeopleNumMap.get(shi);
+                if(peopleNum==null){
+                    zeroAndPeopleNumMap.put(shi,1);
+                }else {
+                    zeroAndPeopleNumMap.put(shi,peopleNum+1);
+                }
+            }
+        }
+        return zeroAndPeopleNumMap;
     }
 
     @Override
