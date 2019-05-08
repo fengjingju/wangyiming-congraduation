@@ -20,12 +20,12 @@
     <script src="/incubator-echarts-4.2.1/dist/echarts.js"></script>
 
 </head>
-<body class="gray-bg">
+<body style="display: flex; height: auto">
 
-<div style="float: left;height: 100%;background-color: #1c2b36;width: 18%">
+<div style="background-color: #1c2b36;width: 18%" style="flex: 1">
     <%@ include file="/jsp/index.jsp" %>
 </div>
-<div class="wrapper wrapper-content animated fadeInRight" style="float:left;width: 82%">
+<div class="wrapper wrapper-content animated fadeInRight" style="flex: 1">
     <div class="row">
         <div class="col-sm-12">
             <div class="ibox float-e-margins">
