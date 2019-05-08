@@ -37,7 +37,12 @@
                 <div class="ibox-content">
                     <div class="row">
                         <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+                        <br>
+                        <br>
+                        <br>
+                        <br>
                         <div id="chartone" style="width: 80%;height:70%;margin: 0 auto;"></div>
+                        <br>
                         <br>
                         <br>
                         <br>
@@ -63,8 +68,8 @@
     // 指定图表的配置项和数据
     var option = {
         title: {
-            text: '评论人群特征分析',
-            subtext: '评论人群特征分析'
+            text: '评论人群年龄特征分析',
+            subtext: '统计分析所有参与政府微博评论人群的年龄特征'
         },
         tooltip: {
             trigger: 'item',
@@ -146,18 +151,23 @@
     myChart.setOption(option);
 
     option2 = {
+        title: {
+            text: '评论人群性别统计分析',
+            subtext: '统计分析所有参与政府微博评论人群的性别统计'
+        },
         tooltip: {
             trigger: 'item',
             formatter: "{a} <br/>{b}: {c} ({d}%)"
         },
         legend: {
             orient: 'vertical',
-            x: 'left',
-            data:['直接访问','邮件营销','联盟广告','视频广告','搜索引擎']
+            x: 'right',
+            //data:['直接访问','邮件营销','联盟广告','视频广告','搜索引擎']
+            data:['男','女']
         },
         series: [
             {
-                name:'访问来源',
+                name:'用户性别',
                 type:'pie',
                 radius: ['50%', '70%'],
                 avoidLabelOverlap: false,
@@ -179,13 +189,14 @@
                         show: false
                     }
                 },
-                data:[
+                /*data:[
                     {value:335, name:'直接访问'},
                     {value:310, name:'邮件营销'},
                     {value:234, name:'联盟广告'},
                     {value:135, name:'视频广告'},
                     {value:1548, name:'搜索引擎'}
-                ]
+                ]*/
+                data:${userSex}
             }
         ]
     };

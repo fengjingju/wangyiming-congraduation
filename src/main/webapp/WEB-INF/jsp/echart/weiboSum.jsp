@@ -42,6 +42,10 @@
                 <div class="ibox-content">
                     <div class="row">
                         <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+                        <br>
+                        <br>
+                        <br>
+                        <br>
                         <div id="chartone" style="width: 80%;height:70%;margin: 0 auto;"></div>
                         <br>
                         <br>
@@ -66,79 +70,42 @@
     var myChart = echarts.init(document.getElementById('chartone'));
     var myChart2 = echarts.init(document.getElementById('charttwo'));
     // 指定图表的配置项和数据
-    var option = {
-        backgroundColor: '#ffffff',
-
+    option = {
         title: {
-            text: 'Customized Pie',
-            left: 'center',
-            top: 20,
-            textStyle: {
-                color: '#262626'
-            }
+            text: '政府微博发博数量',
+            subtext: '各个政府部门发微博数量所占百分比',
+            left: 'left'
         },
-
         tooltip : {
             trigger: 'item',
             formatter: "{a} <br/>{b} : {c} ({d}%)"
         },
-
-        visualMap: {
-            show: false,
-            min: 80,
-            max: 600,
-            inRange: {
-                colorLightness: [0, 1]
-            }
+        legend: {
+            // orient: 'vertical',
+            // top: 'middle',
+            bottom: 10,
+            left: 'center',
+            data: ['西凉', '益州','兖州','荆州','幽州']
         },
         series : [
             {
-                name:'访问来源',
-                type:'pie',
-                radius : '55%',
+                name:'发微博数量',
+                type: 'pie',
+                radius : '65%',
                 center: ['50%', '50%'],
-                data:[
-                    {value:57, name:'直接访问'},
-                    {value:5, name:'邮件营销'},
-                    {value:64, name:'联盟广告'},
-                    {value:212, name:'视频广告'},
-                    {value:781, name:'搜索引擎'}
-                ].sort(function (a, b) { return a.value - b.value; }),
-                <%--data:${weiboCount}.sort(function (a, b) { return a.value - b.value; }),--%>
-                roseType: 'radius',
-                label: {
-                    normal: {
-                        textStyle: {
-                            color: '#262626'
-                        }
-                    }
-                },
-                labelLine: {
-                    normal: {
-                        lineStyle: {
-                            color: '#262626'
-                        },
-                        smooth: 0.2,
-                        length: 10,
-                        length2: 20
-                    }
-                },
+                selectedMode: 'single',
+                data:${weiboCount},
                 itemStyle: {
-                    normal: {
-                        color: '#c23531',
-                        shadowBlur: 200,
-                        shadowColor: '#ffffff'
+                    emphasis: {
+                        shadowBlur: 10,
+                        shadowOffsetX: 0,
+                        shadowColor: 'rgba(0, 0, 0, 0.5)'
                     }
-                },
-
-                animationType: 'scale',
-                animationEasing: 'elasticOut',
-                animationDelay: function (idx) {
-                    return Math.random() * 200;
                 }
             }
         ]
     };
+
 
     myChart.setOption(option);
 
@@ -167,7 +134,7 @@
         xAxis: {
             type : 'category',
             splitLine: {show:false},
-            data : ['总费用','房租','水电费','交通费','伙食费','日用品数']
+            data :${weiboCountx}
         },
         yAxis: {
             type : 'value'
@@ -187,10 +154,10 @@
                         color: 'rgba(0,0,0,0)'
                     }
                 },
-                data: [0, 1700, 1400, 1200, 300, 0]
+                data:${weiboCount3}
             },
             {
-                name: '生活费',
+                name: '发微博数',
                 type: 'bar',
                 stack: '总量',
                 label: {
@@ -199,7 +166,7 @@
                         position: 'inside'
                     }
                 },
-                data:[2900, 1200, 300, 200, 900, 300]
+                data:${weiboCount2}
             }
         ]
     };

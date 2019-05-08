@@ -36,7 +36,7 @@
                                 <span class="clear">
                                     <span class="block m-t-xs" style="font-size:20px;">
                                         <i class="fa fa-area-chart"></i>
-                                        <strong class="font-bold">新媒体政务展示</strong>
+                                        <strong class="font-bold">政府政务新媒体</strong>
                                     </span>
                                 </span>
                             </a>
@@ -62,7 +62,7 @@
                     <li>
                         <a href="/weibo"><i class="fa fa-table"></i> <span class="nav-label">微博原文展示</span></a>
                         <a href="/getWeiboCount"><i class="fa fa-edit"></i> <span class="nav-label">政府微博活跃度展示</span></a>
-                        <a href="/weibocommentsum"><i class="fa fa-desktop"></i> <span class="nav-label">微博评论聚集度展示</span></a>
+                        <a href="/getCommentCount"><i class="fa fa-desktop"></i> <span class="nav-label">微博评论聚集度展示</span></a>
                     </li>
                     <li class="line dk"></li>
                     <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
@@ -70,7 +70,7 @@
                     </li>
                     <li>
                         <a href="/peopleAgeFeature"><i class="fa fa fa-bar-chart-o"></i> <span class="nav-label">评论人群特征分析</span></a>
-                        <a href="/userarea"><i class="fa fa-flask"></i> <span class="nav-label">评论人群分布分析</span></a>
+                        <a href="/userarea"><i class="fa fa-flask"></i> <span class="nav-label">互动人群地域分布</span></a>
                         <a href="/useremotion"><i class="fa fa-magic"></i> <span class="nav-label">评论舆情倾向分析</span></a>
                     </li>
                     </li>

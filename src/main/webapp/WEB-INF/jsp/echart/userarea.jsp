@@ -40,8 +40,7 @@
         <div class="col-sm-12">
             <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                    <h5>基本表单
-                        <small>简单登录表单示例</small>
+                    <h5>互动评论人群分布
                     </h5>
                 </div>
                 <div class="ibox-content">
@@ -271,8 +270,8 @@
     option = {
         backgroundColor: '#404a59',
         title: {
-            text: '中国华能集团公司风电场分布图',
-            subtext: 'data from CHINA HUANENG',
+            text: '政府政务新媒体互动人群分布',
+            subtext: 'data from WEIBO',
             left: 'center',
             textStyle: {
                 color: '#fff'

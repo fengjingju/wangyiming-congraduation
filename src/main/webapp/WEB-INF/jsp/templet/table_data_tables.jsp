@@ -97,7 +97,7 @@
 <script src="js/plugins/dataTables/dataTables.bootstrap.js"></script>
 
 <!-- 自定义js -->
-<script src="js/content.js?v=1.0.0"></script>
+
 
 
 <!-- Page-Level Scripts -->
