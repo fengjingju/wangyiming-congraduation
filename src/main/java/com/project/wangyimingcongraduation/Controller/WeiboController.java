@@ -138,8 +138,8 @@ public class WeiboController {
             switch (i) {
                 case 0: {
                     makeString += "value:" + weiboCount + ",name:" + grovernment0;
-                    makeString2 = "0" + "," + weiboCount + ",";
-                    makeString_2 = allWeiboCount + "," + String.valueOf(allWeiboCount-weiboCount) + "," ;
+                    makeString2 = allWeiboCount + "," + weiboCount + ",";
+                    makeString_2 = "0"  + "," + String.valueOf(allWeiboCount-weiboCount) + "," ;
                     makextitle = makextitle + "," + grovernment0 + ",";
                 }
                 break;
@@ -183,8 +183,9 @@ public class WeiboController {
 
         //通用方法
         map.addAttribute("weiboCount", MakeEchartsJsonStringUtil.makeJsonArrayString(makeString));
-        map.addAttribute("weiboCount2", MakeEchartsJsonStringUtil.makeEchartTitle(makeString));
-        map.addAttribute("weiboCount3", MakeEchartsJsonStringUtil.makeEchartTitle(makeString_2));
+        map.addAttribute("weiboCount1", MakeEchartsJsonStringUtil.makeEchartTitle(makeString));
+        map.addAttribute("weiboCount2", MakeEchartsJsonStringUtil.makeEchartTitle(makeString_2));
+        map.addAttribute("weiboCount3", MakeEchartsJsonStringUtil.makeEchartTitle(makeString2));
         map.addAttribute("weiboCountx", MakeEchartsJsonStringUtil.makeEchartTitle(makextitle));
 
         //拼装坐标
@@ -204,7 +205,7 @@ public class WeiboController {
 
 
 //页面3
-    @RequestMapping("getCommentCount")
+    @RequestMapping("/getCommentCount")
     public String getCommentCount(ModelMap map)throws Exception {
         List<Weibo> weiboList = weiboService.getCommentCount();
         List<Weibo> weiboList2 = weiboService.getWeiboCount();
@@ -281,41 +282,56 @@ public class WeiboController {
 //页面6
     @RequestMapping("/getEmotionTendency")
     public String getEmotionTendency(ModelMap map) {
-        List<WeiboComment> weiboCommentList = weiboCommentService.getEmotionTendency();
-
-        //获取每种情感的整体数量
-        /*String[] emotionNum = new String[3];
-        for(WeiboComment weiboComment : weiboCommentList){
-            int i = 0;
-            emotionNum[i++] = String.valueOf(weiboComment.getCountnum());
-        }*/
-
-        String negEmotion = "消极情绪";
-        String neuEmotion = "中立情绪";
-        String posEmotion = "积极情绪";
+        List<WeiboComment> weiboCommentList = weiboCommentService.getclassifyEmotion();
 
         //拼装数据
-        String makeString = "";
-        for(int i=0;i<weiboCommentList.size();i++){
-            Integer commentNum = weiboCommentList.get(i).getCountnum();
-            switch (i){
-                case 0:makeString+="value:" + commentNum+",name:" +negEmotion;break;
-                case 1:makeString+=";value:" + commentNum+",name:" +neuEmotion;break;
-                case 2:makeString+=";value:" + commentNum+",name:" +posEmotion;break;
-            }
-        }
+        String negEmotion = "0:消极情绪";//0
+        String neuEmotion = "1:中立情绪";//1
+        String posEmotion = "2:积极情绪";//2
+
+        String grovernment0 = "最高人民检察院";
+        String grovernment1 = "平安北京";
+        String grovernment2 = "法制日报";
+        String grovernment3 = "首都网警";
+        String grovernment4 = "人民日报";
+        String grovernment5 = "中国警方在线";
+
+        String makeGvmentE0 = "";
+        String makeGvmentE1 = "";
+        String makeGvmentE2 = "";
+        String makeEmotionY = "";
+        String makeEmotionTitle = "";
+
+        makeEmotionTitle = negEmotion + "," + neuEmotion + "," + posEmotion;
+        makeEmotionY = grovernment5 + "," + grovernment4 + "," + grovernment1 + "," + grovernment0 + "," + grovernment2 + "," + grovernment3;
+        makeGvmentE0 = weiboCommentList.get(0).getEmotionnum() + "," +weiboCommentList.get(3).getEmotionnum() + ","
+                + weiboCommentList.get(6).getEmotionnum() + "," + weiboCommentList.get(9).getEmotionnum() + ","
+                + weiboCommentList.get(12).getEmotionnum() + "," +weiboCommentList.get(15).getEmotionnum();
+        makeGvmentE1 = weiboCommentList.get(1).getEmotionnum() + "," +weiboCommentList.get(4).getEmotionnum() + ","
+                + weiboCommentList.get(7).getEmotionnum() + "," + weiboCommentList.get(10).getEmotionnum() + ","
+                + weiboCommentList.get(13).getEmotionnum() + "," +weiboCommentList.get(16).getEmotionnum();
+        makeGvmentE2 = weiboCommentList.get(2).getEmotionnum() + "," +weiboCommentList.get(5).getEmotionnum() + ","
+                + weiboCommentList.get(8).getEmotionnum() + "," + weiboCommentList.get(11).getEmotionnum() + ","
+                + weiboCommentList.get(14).getEmotionnum() + "," +weiboCommentList.get(17).getEmotionnum();
 
         //通用方法
-        map.addAttribute("commentEmotion", MakeEchartsJsonStringUtil.makeJsonArrayString(makeString));
+        map.addAttribute("makeEmotionTitle", MakeEchartsJsonStringUtil.makeEchartTitle(makeEmotionTitle));
+        map.addAttribute("makeEmotionY", MakeEchartsJsonStringUtil.makeEchartTitle(makeEmotionY));
+        map.addAttribute("makeGvmentE0", MakeEchartsJsonStringUtil.makeEchartTitle(makeGvmentE0));
+        map.addAttribute("makeGvmentE1", MakeEchartsJsonStringUtil.makeEchartTitle(makeGvmentE1));
+        map.addAttribute("makeGvmentE2", MakeEchartsJsonStringUtil.makeEchartTitle(makeGvmentE2));
         System.out.println("评论整体舆情倾向分析");
 
         // 想看json结果你不会debug的话可以打印出来一行结果在控制台看
-        System.out.println("这就是那行结果："+MakeEchartsJsonStringUtil.makeJsonArrayString(makeString));
-
-        return "echarts/useremotion";
+        System.out.println("舆情title："+MakeEchartsJsonStringUtil.makeEchartTitle(makeEmotionTitle));
+        System.out.println("舆情Y："+MakeEchartsJsonStringUtil.makeEchartTitle(makeEmotionY));
+        System.out.println("舆情0："+MakeEchartsJsonStringUtil.makeEchartTitle(makeGvmentE0));
+        System.out.println("舆情1："+MakeEchartsJsonStringUtil.makeEchartTitle(makeGvmentE1));
+        System.out.println("舆情2："+MakeEchartsJsonStringUtil.makeEchartTitle(makeGvmentE2));
+        return "echart/useremotion";
     }
 
-//页面6
+/*页面6
     @RequestMapping("/getclassifyEmotion")
     List<WeiboComment> getclassifyEmption(){
         return weiboCommentService.getclassifyEmotion();
@@ -330,7 +346,7 @@ public class WeiboController {
     }
 
 
-
+*/
 
 
 

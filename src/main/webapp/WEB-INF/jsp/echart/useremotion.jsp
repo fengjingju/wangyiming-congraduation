@@ -63,7 +63,8 @@
             }
         },
         legend: {
-            data: ['直接访问', '邮件营销','联盟广告','视频广告','搜索引擎']
+            //data: ['直接访问', '邮件营销','联盟广告','视频广告','搜索引擎']
+            data: ${makeEmotionTitle}
         },
         grid: {
             left: '3%',
@@ -76,11 +77,12 @@
         },
         yAxis: {
             type: 'category',
-            data: ['周一','周二','周三','周四','周五','周六','周日']
+            //data: ['周一','周二','周三','周四','周五','周六','周日']
+            data: ${makeEmotionY}
         },
         series: [
             {
-                name: '直接访问',
+                name: '0:消极情绪',
                 type: 'bar',
                 stack: '总量',
                 label: {
@@ -89,10 +91,11 @@
                         position: 'insideRight'
                     }
                 },
-                data: [320, 302, 301, 334, 390, 330, 320]
+                //data: [320, 302, 301, 334, 390, 330, 320]
+                data: ${makeGvmentE0}
             },
             {
-                name: '邮件营销',
+                name: '1:中立情绪',
                 type: 'bar',
                 stack: '总量',
                 label: {
@@ -101,10 +104,11 @@
                         position: 'insideRight'
                     }
                 },
-                data: [120, 132, 101, 134, 90, 230, 210]
+                //data: [120, 132, 101, 134, 90, 230, 210]
+                data:${makeGvmentE1}
             },
             {
-                name: '联盟广告',
+                name: '2:积极情绪',
                 type: 'bar',
                 stack: '总量',
                 label: {
@@ -113,9 +117,10 @@
                         position: 'insideRight'
                     }
                 },
-                data: [220, 182, 191, 234, 290, 330, 310]
+                //data: [220, 182, 191, 234, 290, 330, 310]
+                data: ${makeGvmentE2}
             },
-            {
+            /*{
                 name: '视频广告',
                 type: 'bar',
                 stack: '总量',
@@ -138,7 +143,7 @@
                     }
                 },
                 data: [820, 832, 901, 934, 1290, 1330, 1320]
-            }
+            }*/
         ]
     };
     myChart2.setOption(option2);

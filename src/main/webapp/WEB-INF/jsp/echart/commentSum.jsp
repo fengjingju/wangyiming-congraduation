@@ -86,14 +86,15 @@
     };
     myChart.setOption(option);
 
-    var option2 = {
+    var option2 ={
         title: {
             text: '微博数量与评论数量雷达图'
         },
-        tooltip: {},
+        //tooltip: {},
         legend: {
-            data: ['预算分配（Allocated Budget）', '实际开销（Actual Spending）']
-            //data: ['微博数量','评论数量']
+            //data: ['预算分配（Allocated Budget）', '实际开销（Actual Spending）']
+            right: 'center',
+            data: ['微博数量 ','评论数量 ']
         },
         radar: {
             // shape: 'circle',
@@ -132,6 +133,7 @@
             ]
         }]
     };
+
     myChart2.setOption(option2);
 </script>
 </body>

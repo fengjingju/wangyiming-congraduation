@@ -109,10 +109,10 @@
 
     myChart.setOption(option);
 
-    var option2 =option = {
+    var option2 ={
         title: {
-            text: '政府新媒体微博数量组成（单位:条）',
-            subtext: 'From ExcelHome',
+            text: '政府政务新媒体发微博数量统计',
+            subtext: 'From sina weibo',
             sublink: 'http://e.weibo.com/1341556070/AjQH99che'
         },
         tooltip : {
@@ -134,7 +134,8 @@
         xAxis: {
             type : 'category',
             splitLine: {show:false},
-            data :${weiboCountx}
+            //data : ['总费用','房租','水电费','交通费','伙食费','日用品数']
+            data:${weiboCountx}
         },
         yAxis: {
             type : 'value'
@@ -154,10 +155,11 @@
                         color: 'rgba(0,0,0,0)'
                     }
                 },
-                data:${weiboCount3}
+                //data: [0, 1700, 1400, 1200, 300, 0]
+                data: ${weiboCount2}
             },
             {
-                name: '发微博数',
+                name: '生活费',
                 type: 'bar',
                 stack: '总量',
                 label: {
@@ -166,7 +168,8 @@
                         position: 'inside'
                     }
                 },
-                data:${weiboCount2}
+                //data:[2900, 1200, 300, 200, 900, 300]
+                data: ${weiboCount3}
             }
         ]
     };
