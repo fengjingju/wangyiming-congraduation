@@ -25,4 +25,9 @@ public class WeiboCommentServiceImpl implements WeiboCommentService {
     public List<WeiboComment> getclassifyEmotion(){
         return weiboConmmentMapper.getclassifyEmotion();
     }
+
+    @Override
+    public List<WeiboComment> findAllWeiboComment() {
+        return weiboConmmentMapper.findAllWeiboComment();
+    }
 }

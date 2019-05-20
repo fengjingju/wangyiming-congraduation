@@ -1,5 +1,6 @@
 package com.project.wangyimingcongraduation.Controller;
 
+import com.project.wangyimingcongraduation.domain.RelationshipEchartEntity;
 import com.project.wangyimingcongraduation.domain.Weibo;
 import com.project.wangyimingcongraduation.domain.WeiboComment;
 import com.project.wangyimingcongraduation.domain.WeiboUser;
@@ -12,11 +13,14 @@ import com.project.wangyimingcongraduation.util.MakeEchartsJsonStringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * @Author: Create by FENGJINGJU
@@ -380,5 +384,61 @@ public class WeiboController {
     @RequestMapping("/relationship2")
     public String relationship2(){
         return "echart/relationship2";
+    }
+
+    @RequestMapping("/relationship3")
+    public String relationship3() throws Exception {
+//        List<Weibo> weiboList = weiboService.getAllWeibo();
+//        List<WeiboUser> weiboUserList = weiboUserService.findAllWeiboUser();
+        List<WeiboComment> weiboCommentList = weiboCommentService.findAllWeiboComment();
+        RelationshipEchartEntity relationshipEchartEntity = new RelationshipEchartEntity();
+        Set<RelationshipEchartEntity.Data> dataSet = new HashSet<>();
+        Set<RelationshipEchartEntity.Link> linkSet = new HashSet<>();
+        Integer[] weiboArray = new Integer[]{20,20};
+        Integer[] weiboUserArray = new Integer[]{10,10};
+//        for(Weibo weibo:weiboList){
+//            RelationshipEchartEntity.Data data = new RelationshipEchartEntity.Data();
+//            data.setName(String.valueOf(weibo.getWeiboNumber()));
+//            data.setDraggable(true);
+//            data.setSymbolSize(weiboArray);
+//            data.setItemStyle(new RelationshipEchartEntity.ItemStrle("#00ff00"));
+//            dataSet.add(data);
+//        }
+//        for(WeiboUser weiboUser:weiboUserList){
+//            RelationshipEchartEntity.Data data = new RelationshipEchartEntity.Data();
+//            data.setName(String.valueOf(weiboUser.getUserNumber()));
+//            data.setDraggable(true);
+//            data.setSymbolSize(weiboUserArray);
+//            data.setItemStyle(new RelationshipEchartEntity.ItemStrle("#000"));
+//            dataSet.add(data);
+//        }
+        for(WeiboComment weiboComment:weiboCommentList){
+            if(weiboComment.getCommentUser()==null || weiboComment.getCommentWeiBoNumber()==null){
+                continue;
+            }
+            RelationshipEchartEntity.Data userData = new RelationshipEchartEntity.Data();
+            userData.setName(String.valueOf(weiboComment.getCommentUser()));
+            userData.setDraggable(true);
+            userData.setSymbolSize(weiboUserArray);
+            userData.setItemStyle(new RelationshipEchartEntity.ItemStrle("#000"));
+            dataSet.add(userData);
+
+            RelationshipEchartEntity.Data weiboData = new RelationshipEchartEntity.Data();
+            weiboData.setName(String.valueOf(weiboComment.getCommentWeiBoNumber()));
+            weiboData.setDraggable(true);
+            weiboData.setSymbolSize(weiboArray);
+            weiboData.setItemStyle(new RelationshipEchartEntity.ItemStrle("#00ff00"));
+            dataSet.add(weiboData);
+
+            RelationshipEchartEntity.Link link = new RelationshipEchartEntity.Link();
+            link.setSource(String.valueOf(weiboComment.getCommentUser()));
+            link.setTarget(String.valueOf(weiboComment.getCommentWeiBoNumber()));
+            linkSet.add(link);
+        }
+        relationshipEchartEntity.setData(dataSet);
+        relationshipEchartEntity.setLinks(linkSet);
+        MakeEchartsJsonStringUtil.makeRelationshipJsonString(relationshipEchartEntity);
+
+        return "echart/relationship3";
     }
 }

@@ -11,4 +11,7 @@ public interface WeiboCommentService {
 
     /**通过sender分类的情感评论数据*/
     List<WeiboComment> getclassifyEmotion();
+
+    /** 获取所有微博评论 */
+    List<WeiboComment> findAllWeiboComment();
 }

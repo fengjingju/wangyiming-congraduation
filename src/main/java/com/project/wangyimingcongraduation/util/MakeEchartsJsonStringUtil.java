@@ -1,7 +1,6 @@
 package com.project.wangyimingcongraduation.util;
 
-import java.util.List;
-import java.util.Map;
+import com.project.wangyimingcongraduation.domain.RelationshipEchartEntity;
 
 /**
  * @Author: Create by FENGJINGJU
@@ -72,5 +71,16 @@ public class MakeEchartsJsonStringUtil {
         }
         stringBuffer.append("]");
         return stringBuffer.toString().replace(",]", "]");
+    }
+
+    /**
+     * 拼接关系图所需Json字符串
+     * @param relationshipEchartEntity
+     * @return
+     */
+    public static String makeRelationshipJsonString(RelationshipEchartEntity relationshipEchartEntity){
+        String temp = GsonUtil.transferJsonStringFromListOrObject(relationshipEchartEntity);
+        System.out.println(temp);
+        return null;
     }
 }

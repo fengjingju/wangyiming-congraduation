@@ -19,7 +19,12 @@ public class GsonUtil {
         return new Gson().fromJson(jsonString, t);
     }
 
-    public String transferJsonStringFromListOrObject(Object object){
+    /**
+     * 将实体或List转换为Json字符串
+     * @param object
+     * @return
+     */
+    public static String transferJsonStringFromListOrObject(Object object){
         return new Gson().toJson(object);
     }
 }
