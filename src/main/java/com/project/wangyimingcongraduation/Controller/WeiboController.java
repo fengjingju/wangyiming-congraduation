@@ -372,4 +372,13 @@ public class WeiboController {
         return "echart/userarea";
     }
 
+    @RequestMapping("/relationship")
+    public String relationship(){
+        return "echart/relationship";
+    }
+
+    @RequestMapping("/relationship2")
+    public String relationship2(){
+        return "echart/relationship2";
+    }
 }
