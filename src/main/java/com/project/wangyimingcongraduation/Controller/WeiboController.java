@@ -387,58 +387,56 @@ public class WeiboController {
     }
 
     @RequestMapping("/relationship3")
-    public String relationship3() throws Exception {
-//        List<Weibo> weiboList = weiboService.getAllWeibo();
-//        List<WeiboUser> weiboUserList = weiboUserService.findAllWeiboUser();
+    public String relationship3(ModelMap map) {
         List<WeiboComment> weiboCommentList = weiboCommentService.findAllWeiboComment();
         RelationshipEchartEntity relationshipEchartEntity = new RelationshipEchartEntity();
         Set<RelationshipEchartEntity.Data> dataSet = new HashSet<>();
         Set<RelationshipEchartEntity.Link> linkSet = new HashSet<>();
-        Integer[] weiboArray = new Integer[]{20,20};
-        Integer[] weiboUserArray = new Integer[]{10,10};
-//        for(Weibo weibo:weiboList){
-//            RelationshipEchartEntity.Data data = new RelationshipEchartEntity.Data();
-//            data.setName(String.valueOf(weibo.getWeiboNumber()));
-//            data.setDraggable(true);
-//            data.setSymbolSize(weiboArray);
-//            data.setItemStyle(new RelationshipEchartEntity.ItemStrle("#00ff00"));
-//            dataSet.add(data);
-//        }
-//        for(WeiboUser weiboUser:weiboUserList){
-//            RelationshipEchartEntity.Data data = new RelationshipEchartEntity.Data();
-//            data.setName(String.valueOf(weiboUser.getUserNumber()));
-//            data.setDraggable(true);
-//            data.setSymbolSize(weiboUserArray);
-//            data.setItemStyle(new RelationshipEchartEntity.ItemStrle("#000"));
-//            dataSet.add(data);
-//        }
-        for(WeiboComment weiboComment:weiboCommentList){
-            if(weiboComment.getCommentUser()==null || weiboComment.getCommentWeiBoNumber()==null){
+
+        // 微博圆圈大小
+        int weiboCircleSize = 50;
+        // 微博用户圆圈大小
+        int weiboUserCircleSize = 35;
+        // 微博圆圈颜色
+        String weiboCircleColor = "#00ff00";
+        // 微博用户圆圈颜色
+        String weiboUserCirlceColor = "#3399FF";
+
+        Integer[] weiboArray = new Integer[]{weiboCircleSize, weiboCircleSize};
+        Integer[] weiboUserArray = new Integer[]{weiboUserCircleSize, weiboUserCircleSize};
+        int i = 0;
+        for (WeiboComment weiboComment : weiboCommentList) {
+            if (weiboComment.getCommentUser() == null || weiboComment.getCommentWeiBoNumber() == null) {
                 continue;
+            }
+
+            i++;
+            if (i == 2000) {// 数据量太大显示效果不好，这里做截断处理
+                break;
             }
             RelationshipEchartEntity.Data userData = new RelationshipEchartEntity.Data();
             userData.setName(String.valueOf(weiboComment.getCommentUser()));
             userData.setDraggable(true);
             userData.setSymbolSize(weiboUserArray);
-            userData.setItemStyle(new RelationshipEchartEntity.ItemStrle("#000"));
+            userData.setItemStyle(new RelationshipEchartEntity.ItemStrle(weiboUserCirlceColor));
             dataSet.add(userData);
 
             RelationshipEchartEntity.Data weiboData = new RelationshipEchartEntity.Data();
-            weiboData.setName(String.valueOf(weiboComment.getCommentWeiBoNumber()));
+            weiboData.setName("微博"+String.valueOf(weiboComment.getCommentWeiBoNumber()));
             weiboData.setDraggable(true);
             weiboData.setSymbolSize(weiboArray);
-            weiboData.setItemStyle(new RelationshipEchartEntity.ItemStrle("#00ff00"));
+            weiboData.setItemStyle(new RelationshipEchartEntity.ItemStrle(weiboCircleColor));
             dataSet.add(weiboData);
 
             RelationshipEchartEntity.Link link = new RelationshipEchartEntity.Link();
-            link.setSource(String.valueOf(weiboComment.getCommentUser()));
-            link.setTarget(String.valueOf(weiboComment.getCommentWeiBoNumber()));
+            link.setSource("微博"+String.valueOf(weiboComment.getCommentWeiBoNumber()));
+            link.setTarget(String.valueOf(weiboComment.getCommentUser()));
             linkSet.add(link);
         }
         relationshipEchartEntity.setData(dataSet);
         relationshipEchartEntity.setLinks(linkSet);
-        MakeEchartsJsonStringUtil.makeRelationshipJsonString(relationshipEchartEntity);
-
+        //String jsonString = "\"data\":[{\"name\":\"6829\",\"draggable\":true,\"symbolSize\":[10,10],\"itemStyle\":{\"color\":\"#000\"}},{\"name\":\"11011\",\"draggable\":true,\"symbolSize\":[10,10],\"itemStyle\":{\"color\":\"#000\"}},{\"name\":\"1689\",\"draggable\":true,\"symbolSize\":[10,10],\"itemStyle\":{\"color\":\"#000\"}},{\"name\":\"1688\",\"draggable\":true,\"symbolSize\":[10,10],\"itemStyle\":{\"color\":\"#000\"}},{\"name\":\"1687\",\"draggable\":true,\"symbolSize\":[10,10],\"itemStyle\":{\"color\":\"#000\"}}],\"links\":[{\"target\":\"6829\",\"source\":\"11011\",\"category\":\"\"},{\"target\":\"1689\",\"source\":\"11011\",\"category\":\"\"},{\"target\":\"1689\",\"source\":\"1688\",\"category\":\"\"},{\"target\":\"1689\",\"source\":\"1687\",\"category\":\"\"},{\"target\":\"1687\",\"source\":\"11011\",\"category\":\"\"}]";
+        map.addAttribute("relationship3", MakeEchartsJsonStringUtil.makeRelationshipJsonString(relationshipEchartEntity));
         return "echart/relationship3";
     }
 }

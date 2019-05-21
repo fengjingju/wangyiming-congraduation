@@ -80,7 +80,6 @@ public class MakeEchartsJsonStringUtil {
      */
     public static String makeRelationshipJsonString(RelationshipEchartEntity relationshipEchartEntity){
         String temp = GsonUtil.transferJsonStringFromListOrObject(relationshipEchartEntity);
-        System.out.println(temp);
-        return null;
+        return temp.substring(1,temp.length()-1);
     }
 }
