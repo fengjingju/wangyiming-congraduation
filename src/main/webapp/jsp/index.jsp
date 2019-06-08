@@ -71,6 +71,7 @@
                     <li>
                         <a href="/peopleAgeFeature"><i class="fa fa fa-bar-chart-o"></i> <span class="nav-label">评论人群特征分析</span></a>
                         <a href="/userarea"><i class="fa fa-flask"></i> <span class="nav-label">互动人群地域分布</span></a>
+                        <a href="/relationship3"><i class="fa fa-flask"></i> <span class="nav-label">微博用户互动链接图</span></a>
                         <a href="/getEmotionTendency"><i class="fa fa-magic"></i> <span class="nav-label">评论舆情倾向分析</span></a>
                     </li>
                     </li>
